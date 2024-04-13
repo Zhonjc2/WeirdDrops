@@ -1,0 +1,194 @@
+{
+  "main": {
+    "id": "36d4cd217bdf2e71",
+    "type": "split",
+    "children": [
+      {
+        "id": "dc51ceba67d139aa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "22508c01b94876ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/关于 Xcode 15 通过非开发者账号在 iOS 设备上真机调试的坑.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b5ffad3f60877a5f",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.8"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d4ad1bda3a51a438",
+    "type": "split",
+    "children": [
+      {
+        "id": "4c948c41cc4693d7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3ac0bba6f4919ea9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "byCreatedTime"
+              }
+            }
+          },
+          {
+            "id": "1687ab102169b594",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a40e0986e1f5c058",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "8e7c2e032249a6cc",
+    "type": "split",
+    "children": [
+      {
+        "id": "9bab1de5d11592a6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9a08c006cef929b0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "_posts/关于 Xcode 15 通过非开发者账号在 iOS 设备上真机调试的坑.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "22997f51d1c812cc",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "_posts/关于 Xcode 15 通过非开发者账号在 iOS 设备上真机调试的坑.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "de828d7f02c2f2b6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "e388fa18ef52e2c8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "_posts/关于 Xcode 15 通过非开发者账号在 iOS 设备上真机调试的坑.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "b5ffad3f60877a5f",
+  "lastOpenFiles": [
+    "images/截屏2024-03-05 19.33.12.png",
+    "images/截屏2024-03-05 19.30.56.png",
+    "_posts/CDN 下的媒体负载测试.md",
+    "_posts/关于 Xcode 15 通过非开发者账号在 iOS 设备上真机调试的坑.md",
+    "_posts/TestLaTeX.md",
+    "_posts/哪些出路？.md",
+    "Test 2.md",
+    "_posts/Test.md",
+    "_posts/使用 Git 配合 Hexo 实现本地编辑云端博客.md",
+    "_posts/Git 使用提醒.md",
+    "_posts/欢迎来到-Zho-s-Blog.md",
+    "_posts/考研院校.md",
+    "_posts/大学硕士调研.md",
+    "images/截屏2023-10-17 16.57.39.png",
+    "images/截屏2023-10-17 16.57.09.png",
+    "images/截屏2023-10-17 16.56.30.png",
+    "images/截屏2023-10-17 16.54.29.png",
+    "_posts/央国企双非计算机本科校招调研.md",
+    "mntips/index.md",
+    "images/截屏2023-08-18 15.47.37.png",
+    "images/85765309_p0.jpg",
+    "images/97801492_p0.jpg",
+    "images/ysz-17.jpeg",
+    "images/ysz-16.jpeg",
+    "images/1cb80d6afff42414496fb2e819f5fe54_2545001388376647547.mp4",
+    "未命名.canvas",
+    "_obsidian/Post Template.md",
+    "_posts/使用 Hexo + Git 自建博客服务器.md",
+    "_obsidian",
+    "_posts/PicTest.md"
+  ]
+}

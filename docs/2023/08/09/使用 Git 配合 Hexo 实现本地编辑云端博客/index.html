@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>使用 Git 配合 Hexo 实现本地编辑云端博客 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="使用 Git 云端仓库 配合 Hexo 实现本地编辑云端博客。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Git 配合 Hexo 实现本地编辑云端博客">
+<meta property="og:url" content="http://example.com/2023/08/09/%E4%BD%BF%E7%94%A8%20Git%20%E9%85%8D%E5%90%88%20Hexo%20%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%BE%91%E4%BA%91%E7%AB%AF%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="使用 Git 云端仓库 配合 Hexo 实现本地编辑云端博客。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.27.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.49.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.07.28.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.15.26.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.16.42.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.17.49.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.25.14.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.27.16.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.38.16.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.38.16.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.51.13.png">
+<meta property="og:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.53.34.png">
+<meta property="article:published_time" content="2023-08-09T08:50:23.000Z">
+<meta property="article:modified_time" content="2023-08-09T09:56:03.288Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.27.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-使用 Git 配合 Hexo 实现本地编辑云端博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/09/%E4%BD%BF%E7%94%A8%20Git%20%E9%85%8D%E5%90%88%20Hexo%20%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%BE%91%E4%BA%91%E7%AB%AF%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2023-08-09T08:50:23.000Z" itemprop="datePublished">2023-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      使用 Git 配合 Hexo 实现本地编辑云端博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>注意：该文章内容可能存在错误。</strong></p>
+<ul>
+<li>本博客尚未配置 CDN ，图片可能加载较慢。</li>
+</ul>
+<p>使用 Git 云端仓库 配合 Hexo 实现本地编辑云端博客。</p>
+<p>起初，使用自己的云服务器，配置了 Hexo 博客。然而 Hexo 有一个很不好的点，就是新增和编辑博客非常麻烦。一开始想通过 SSH 来实现实时同步，同时使用 Obsidian 来对博客目录进行操作。然而，Obsidian 并不支持使用自己的 SSH 服务器，也没有支持的插件。VSCode 可以，但是并不想用 VSCode 来编写 MarkDown 文件，因为其没有实时预览。后面又想到使用 macOS 的访达连接 FTP 服务器，但是不知道为什么 macOS 抽风，FTP 一直连不上，SMB 也连不上，实际上，我从来没成功用访达连接成功过任何云服务器。</p>
+<p>后来没有办法，只能使用 Hexo Admin 凑活用。</p>
+<p>后来想到了 Git 。Git 是一种版本控制工具，它本不是用来进行文件同步的，而是进行分布式开发的。但是，我们可以利用 Git 的远程仓库，以及 Crontab 自动执行命令，自动拉取更新，来实现客户端编辑好后 push ，云端工作目录自动 pull ，从而更新博客。</p>
+<h2 id="Git-部分"><a href="#Git-部分" class="headerlink" title="Git 部分"></a>Git 部分</h2><ul>
+<li>注意区分 Git 仓库和 Obsidian 仓库。该章节下所有仓库指的都是 Git 远程仓库，Obsidian 仓库在此章节下说明为 Obsidian Vault 。</li>
+</ul>
+<h3 id="创建裸远程仓库"><a href="#创建裸远程仓库" class="headerlink" title="创建裸远程仓库"></a>创建裸远程仓库</h3><ul>
+<li>对于远程仓库，一般创建的都是裸仓库。因为我们没有必要在远程仓库内部对仓库内容进行更新，这是专用于客户端工作目录进行操作的仓库。</li>
+<li>关于裸远程仓库，可以看看我的关于 Git 的博客：<a href="/_posts/Git%20%E4%BD%BF%E7%94%A8%E6%8F%90%E9%86%92.md">Git 使用提醒</a></li>
+<li>创建仓库的位置最好放在博客目录外，仓库名设置为 source.git ，这是为了在 Hexo 中 clone 名字为 source 的仓库，source 即 Hexo 博客的内容。其他名称无法将博客内容 add 到仓库中。</li>
+</ul>
+<p><code>git init --bare source.git</code></p>
+<h3 id="移出-Hexo-博客内容（source-目录）"><a href="#移出-Hexo-博客内容（source-目录）" class="headerlink" title="移出 Hexo 博客内容（source 目录）"></a>移出 Hexo 博客内容（source 目录）</h3><ul>
+<li>之前已经在 Hexo 中发布过一些内容。因为我们要将这些内容添加到新仓库中，唯一的做法就是先把原先内容（整个 source 目录）移出到其他目录下，然后在 Hexo 目录下 clone 一个名叫 source 的仓库，再将原博客内容移入。</li>
+</ul>
+<p><code>mv hexo/source hexo/backup_source</code></p>
+<h3 id="在云端的-Hexo-博客根目录下通过-clone-创建新的-source-目录"><a href="#在云端的-Hexo-博客根目录下通过-clone-创建新的-source-目录" class="headerlink" title="在云端的 Hexo 博客根目录下通过 clone 创建新的 source 目录"></a>在云端的 Hexo 博客根目录下通过 clone 创建新的 source 目录</h3><ul>
+<li>将刚刚创建的云端仓库，在云端服务器的 Hexo 博客目录下，进行 clone ，创建新的 source 目录。</li>
+</ul>
+<p><code>git clone source.git</code></p>
+<h3 id="将原先的-source-目录内容移入新-source-目录"><a href="#将原先的-source-目录内容移入新-source-目录" class="headerlink" title="将原先的 source 目录内容移入新 source 目录"></a>将原先的 source 目录内容移入新 source 目录</h3><p><code>mv hexo/backup_source/* hexo/source/</code></p>
+<h3 id="使-source-下的文件被-Git-追溯"><a href="#使-source-下的文件被-Git-追溯" class="headerlink" title="使 source 下的文件被 Git 追溯"></a>使 source 下的文件被 Git 追溯</h3><p><code>git add .</code></p>
+<h3 id="提交并推送"><a href="#提交并推送" class="headerlink" title="提交并推送"></a>提交并推送</h3><p><code>git commit -m &#39;init&#39;</code><br><code>git push</code></p>
+<h3 id="配置服务端自动拉取更新"><a href="#配置服务端自动拉取更新" class="headerlink" title="配置服务端自动拉取更新"></a>配置服务端自动拉取更新</h3><ul>
+<li>这里采用的方法是 Crontab ，实际上这个方法个人觉得不是太适合。</li>
+</ul>
+<p><code>crontab -e</code><br>然后编写：<br><code>*/1 * * * * cd 你的source工作目录;git pull</code><br>保存并退出</p>
+<h2 id="Obsidian-部分"><a href="#Obsidian-部分" class="headerlink" title="Obsidian 部分"></a>Obsidian 部分</h2><h3 id="在客户端-clone-云端仓库"><a href="#在客户端-clone-云端仓库" class="headerlink" title="在客户端 clone 云端仓库"></a>在客户端 clone 云端仓库</h3><p><code>git clone 用户@IP地址:source.git远程仓库位置</code></p>
+<ul>
+<li>注：需要提前配置好 SSH 及其免密登陆，以及专用于更新博客的 Git 用户。</li>
+</ul>
+<h3 id="用-Obsidian-打开-clone-好的工作目录"><a href="#用-Obsidian-打开-clone-好的工作目录" class="headerlink" title="用 Obsidian 打开 clone 好的工作目录"></a>用 Obsidian 打开 clone 好的工作目录</h3><p><img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.27.png" alt=" File - Open Vault "><br><img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.49.png" alt="选择打开，选择刚刚 clone 好的工作目录"><br><img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.07.28.png" alt="进入 Obsidian"></p>
+<h3 id="Obsidian-安装-Obsidian-Git-插件-简化客户端博客推送流程"><a href="#Obsidian-安装-Obsidian-Git-插件-简化客户端博客推送流程" class="headerlink" title="Obsidian 安装 Obsidian Git 插件 简化客户端博客推送流程"></a>Obsidian 安装 Obsidian Git 插件 简化客户端博客推送流程</h3><ul>
+<li>Obsidian 有一个第三方插件，叫 Obsidian Git，该插件在 Obsidian 内置了 Git 命令。</li>
+<li>只需要打开的 Obsidian Vault 为一个正常的 Git 工作目录（包含 .git 文件夹），就可以直接使用这个插件执行 git 命令。</li>
+<li>似乎这个插件没有 git add，而直接 git commit 便可以。</li>
+</ul>
+<p><img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.15.26.png"></p>
+<ul>
+<li>当博客内容有新变化时，便可以按下 Command + P 打开 Obsidian 命令面板，输入 git commit 查找到该插件的操作，回车即可。<img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.16.42.png"></li>
+<li>推送时和 commit 一样。<img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.17.49.png"></li>
+</ul>
+<h3 id="创建笔记模版"><a href="#创建笔记模版" class="headerlink" title="创建笔记模版"></a>创建笔记模版</h3><ul>
+<li><p>来自 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000042111566?sort=newest">https://segmentfault.com/a/1190000042111566?sort=newest</a></p>
+</li>
+<li><p>为了在 Obsidian 创建笔记时，方便添加 Hexo 的 Front-matter，可以在 Obsidian 中创建模版。</p>
+</li>
+<li><p>在本地工作目录下，创建 _obsidian 目录，并在目录下新建 Post Template 文件，格式为 md 。最好在 Obsidian 内新建该文件。在文件内添加内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123;title&#125;&#125;</span><br><span class="line">date: &#123;&#123;date&#125;&#125;</span><br><span class="line">author: 你的作者名称</span><br><span class="line">tags: []</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+<li><p>然后进入 Obsidian 设置 - 核心插件 - 模版 将其打开，然后点击切换按钮旁的设置按钮，进入模版设置。</p>
+</li>
+<li><p>在模版设置下，将相关设置改为：</p>
+<ul>
+<li>模版文件夹位置内容为 _obsidian</li>
+<li>日期格式为 YYYY-MM-DD HH:mm:ss</li>
+<li><img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.25.14.png"></li>
+</ul>
+</li>
+<li><p>之后新建新博客时，只需要点击 Obsidian 侧边栏的 插入模版 按钮即可。<img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.27.16.png"></p>
+</li>
+</ul>
+<h3 id="修改-Obsidian-媒体链接格式"><a href="#修改-Obsidian-媒体链接格式" class="headerlink" title="修改 Obsidian 媒体链接格式"></a>修改 Obsidian 媒体链接格式</h3><ul>
+<li>Obsidian 默认拖入的媒体文件，在笔记内的链接格式是 Wiki 链接。</li>
+<li>为了 Hexo 主题进行正确识别媒体链接，需要将 Obsidian 设置中的 使用 Wiki 链接 关闭。<img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.38.16.png"></li>
+</ul>
+<h3 id="修改-Obsidian-的附件默认存放路径"><a href="#修改-Obsidian-的附件默认存放路径" class="headerlink" title="修改 Obsidian 的附件默认存放路径"></a>修改 Obsidian 的附件默认存放路径</h3><ul>
+<li>Obsidian 默认新添加的附件存储在 Obsidian Vault 的根目录，我们需要将附件文件夹路径修改为 Hexo 的附件位置。</li>
+<li>除此之外，还需要将 内部链接类型修改为 基于仓库根目录的绝对路径。<img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.38.16.png"></li>
+<li>现在，你可以直接将本地的附件，粘贴到 Obsidian 笔记中，Obsidian 会自动将附件复制到附录文件夹下，并在笔记中给出正确的链接路径。</li>
+<li>但是，Obsidian 给出的链接路径，在 Hexo 中无法找到，需要在链接头部多加一个 ‘&#x2F;‘ 才能在 Hexo 中正确找到。</li>
+<li><img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.51.13.png"></li>
+</ul>
+<h2 id="目前状态"><a href="#目前状态" class="headerlink" title="目前状态"></a>目前状态</h2><ul>
+<li>目前的体验还不错，但是还有一些问题：<ul>
+<li>Crontab 每隔一分钟拉取，每次推送完得等一等才更新，在未来或许可以使用 Git 远程仓库自带的 Hooks 来实现即时 pull ；</li>
+<li>Obsidian 新添加的附件，在经过相关设置后，笔记内的附件链接几乎完美，但是有一个缺点就是需要在链接头部加一个 ‘&#x2F;‘，要不然 Hexo 找不到，这个经常忘记 😓。</li>
+<li><img src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.53.34.png"></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/09/%E4%BD%BF%E7%94%A8%20Git%20%E9%85%8D%E5%90%88%20Hexo%20%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%BE%91%E4%BA%91%E7%AB%AF%E5%8D%9A%E5%AE%A2/" data-id="cluy34uc8000maj2wcakw3urf" data-title="使用 Git 配合 Hexo 实现本地编辑云端博客" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/18/CDN%20%E4%B8%8B%E7%9A%84%E5%AA%92%E4%BD%93%E8%B4%9F%E8%BD%BD%E6%B5%8B%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          图片负载测试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/09/Git%20%E4%BD%BF%E7%94%A8%E6%8F%90%E9%86%92/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git 使用提醒</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E6%99%AE/">科普</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL-8/" rel="tag">MySQL 8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%86%E6%9D%A5/" rel="tag">将来</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/MySQL-8/" style="font-size: 10px;">MySQL 8</a> <a href="/tags/%E5%B0%86%E6%9D%A5/" style="font-size: 20px;">将来</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/03/05/%E5%85%B3%E4%BA%8E%20Xcode%2015%20%E9%80%9A%E8%BF%87%E9%9D%9E%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7%E5%9C%A8%20iOS%20%E8%AE%BE%E5%A4%87%E4%B8%8A%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%E7%9A%84%E5%9D%91/">关于 Xcode 15 在 iOS 设备上真机调试的坑</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/18/CDN%20%E4%B8%8B%E7%9A%84%E5%AA%92%E4%BD%93%E8%B4%9F%E8%BD%BD%E6%B5%8B%E8%AF%95/">图片负载测试</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/09/%E4%BD%BF%E7%94%A8%20Git%20%E9%85%8D%E5%90%88%20Hexo%20%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%BE%91%E4%BA%91%E7%AB%AF%E5%8D%9A%E5%AE%A2/">使用 Git 配合 Hexo 实现本地编辑云端博客</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/09/Git%20%E4%BD%BF%E7%94%A8%E6%8F%90%E9%86%92/">Git 使用提醒</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/08/%E8%80%83%E7%A0%94%E9%99%A2%E6%A0%A1/">考研院校</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
