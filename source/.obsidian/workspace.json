@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/什么是-NAT-？.md",
+                "file": "_posts/This is a test..md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/什么是-NAT-？.md",
+                "file": "_posts/This is a test..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/什么是-NAT-？.md",
+                "file": "_posts/This is a test..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/什么是-NAT-？.md"
+                "file": "_posts/This is a test..md"
               }
             }
           }
@@ -162,6 +162,10 @@
   },
   "active": "b5ffad3f60877a5f",
   "lastOpenFiles": [
+    "images/截屏2024-04-12 18.42.30.png",
+    "_posts/什么是-NAT-？.md",
+    "_posts/This is a test..md",
+    "未命名.md",
     "images/截屏2024-03-05 19.33.12.png",
     "images/截屏2024-03-05 19.30.56.png",
     "_posts/CDN 下的媒体负载测试.md",
@@ -185,7 +189,6 @@
     "images/85765309_p0.jpg",
     "images/97801492_p0.jpg",
     "images/ysz-17.jpeg",
-    "images/ysz-16.jpeg",
     "images/1cb80d6afff42414496fb2e819f5fe54_2545001388376647547.mp4",
     "未命名.canvas",
     "_obsidian/Post Template.md",

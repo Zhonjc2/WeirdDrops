@@ -49,8 +49,8 @@
         }
       },
       "output_wrappers": {
-        "stdout": null,
-        "stderr": "5b99z2emcq"
+        "stdout": "5b99z2emcq",
+        "stderr": null
       },
       "output_channel_order": "stdout-first",
       "output_handling_mode": "buffered",
