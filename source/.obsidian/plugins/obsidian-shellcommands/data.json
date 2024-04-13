@@ -26,7 +26,7 @@
     {
       "id": "19162lkc8r",
       "platform_specific_commands": {
-        "default": "cd /Users/zhonjc/Documents/WeirdDrops\nrm -rf docs\nhexo g\nmv public docs\ntouch docs/CNAME\necho 'blog.zhos.tech' > docs/CNAME\ngit add .\ngit commit -m 'Update'\ngit pull\ngit push\n"
+        "default": "cd /Users/zhonjc/Documents/WeirdDrops\nrm -rf docs\n/opt/homebrew/bin/hexo g\nmv public docs\ntouch docs/CNAME\necho 'blog.zhos.tech' > docs/CNAME\ngit add .\ngit commit -m 'Update'\ngit pull\ngit push\n"
       },
       "shells": {},
       "alias": "dep",
