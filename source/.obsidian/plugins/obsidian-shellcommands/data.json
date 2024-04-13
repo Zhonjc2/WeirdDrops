@@ -64,5 +64,11 @@
   "builtin_variables": {},
   "custom_variables": [],
   "custom_shells": [],
-  "output_wrappers": []
+  "output_wrappers": [
+    {
+      "id": "5b99z2emcq",
+      "title": "Wrapper",
+      "content": "{{output}}"
+    }
+  ]
 }
