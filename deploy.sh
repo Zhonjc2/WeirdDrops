@@ -3,5 +3,5 @@ hexo g
 mv public docs
 git add .
 git commit -m 'Update'
-# git pull
+git pull
 git push
