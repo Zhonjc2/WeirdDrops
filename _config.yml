@@ -3,17 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: 怪奇语录 WeirdDrops
+subtitle: '抛弃无用的情绪，做好该做的便可'
+description: '欢迎来到怪奇语录'
 keywords:
-author: John Doe
-language: en
-timezone: ''
+favicon: /images/a
+author: Zhonjc
+language: zh-CN
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://www.zhos.tech
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -43,14 +44,15 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-syntax_highlighter: highlight.js
 highlight:
+  enable: true
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
+  enable: false
   preprocess: true
   line_number: true
   tab_replace: ''
@@ -96,9 +98,15 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: stellar
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# hexo-admin authentification
+admin:
+  username: Zhonjc
+  password_hash: $2a$10$zw8MpXzHEBAzsvI2AH20rOBgdUbCDe3jAQ5HPCs7cqBP2PE15.hQe
+  secret: my super secret phrase
