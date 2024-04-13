@@ -6,7 +6,9 @@
   "show_autocomplete_menu": true,
   "working_directory": "",
   "default_shells": {},
-  "environment_variable_path_augmentations": {},
+  "environment_variable_path_augmentations": {
+    "darwin": "/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/mysql/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion Tech Preview.app/Contents/Public:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/zhonjc/Library/Application Support/JetBrains/Toolbox/scripts"
+  },
   "show_installation_warnings": true,
   "error_message_duration": 20,
   "notification_message_duration": 10,
@@ -26,7 +28,7 @@
     {
       "id": "19162lkc8r",
       "platform_specific_commands": {
-        "default": "cd /Users/zhonjc/Documents/WeirdDrops\nrm -rf docs\n/opt/homebrew/bin/hexo g\nmv public docs\ntouch docs/CNAME\necho 'blog.zhos.tech' > docs/CNAME\ngit add .\ngit commit -m 'Update'\ngit pull\ngit push\n"
+        "default": "cd /Users/zhonjc/Documents/WeirdDrops\nrm -rf docs\nhexo g\nmv public docs\ntouch docs/CNAME\necho 'blog.zhos.tech' > docs/CNAME\ngit add .\ngit commit -m 'Update'\ngit pull\ngit push\n"
       },
       "shells": {},
       "alias": "dep",
