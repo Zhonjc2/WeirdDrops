@@ -58,8 +58,8 @@ body::after {
   right: 0;
   bottom: 0;
   left: 0;
-  filter: blur(50px) grayscale(0%) saturate(2) !important;
-  -webkit-filter: blur(50px) sepia(0%) grayscale(0%) saturate(2) !important;
+  filter: blur(0px) grayscale(0%) saturate(2) !important;
+  -webkit-filter: blur(0px) sepia(0%) grayscale(0%) saturate(2) !important;
   z-index: -9999;
 }
 .l_body_disabled::after {

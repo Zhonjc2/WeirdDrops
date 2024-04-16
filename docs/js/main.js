@@ -391,7 +391,7 @@ if (stellar.plugins.copycode) {
 }
 
 var backImg = document.createElement('img');
-backImg.src = 'https://t.mwm.moe/ysz';
+backImg.src = 'https://api.suyanw.cn/api/comic/api.php';
 backImg.style.opacity = 0;
 backImg.classList.add('back-img');
 document.body.appendChild(backImg);
