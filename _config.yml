@@ -110,3 +110,7 @@ admin:
   username: Zhonjc
   password_hash: $2a$10$zw8MpXzHEBAzsvI2AH20rOBgdUbCDe3jAQ5HPCs7cqBP2PE15.hQe
   secret: my super secret phrase
+
+mathjax:
+  enable: true
+  tags: none
