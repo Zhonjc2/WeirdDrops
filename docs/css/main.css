@@ -36,7 +36,6 @@ bodyd {
   -webkit-backdrop-filter: opacity(50%) !important;
 }
 body::after {
-  content: "欢迎来到 WeirdDrops 1.0";
   position: absolute;
   display: block;
   z-index: 10000;
