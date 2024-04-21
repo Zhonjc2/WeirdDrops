@@ -114,3 +114,8 @@ admin:
 mathjax:
   enable: true
   tags: none
+
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
