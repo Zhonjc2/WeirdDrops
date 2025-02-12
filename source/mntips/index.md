@@ -4,6 +4,7 @@ date: 2023-07-17 23:47:17
 layout: wiki
 menu_id: mntips
 ---
+hexo generate 前，记得在本地安装 Pandoc。
 
 ### load 监听器是专为 img 等资源元素准备的，不适用于背景图像的加载完成。
 

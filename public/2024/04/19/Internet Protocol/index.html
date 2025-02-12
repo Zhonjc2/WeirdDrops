@@ -1,0 +1,708 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 7.2.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Internet Protocol - 怪奇语录 WeirdDrops</title>
+
+  
+    <meta name="description" content="网际协议 IP概述 网际协议 IP 是 TCP&#x2F;IP 体系最主要的两个协议之一，也是最重要的互联网标准协议之一。 与IP协议配套的使用的还有三个协议： 地址解析协议 ARP 网际控制报文协议 ICMP 网际组管理协议 IGMP 如图： .  将ARP置于网络层最下面，因为IP经常要使用这个协议（ARP置于网络层和数据链路层之间）。ICMP和IGMP置于网络层最上面，因为它们要使用协议IP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Internet Protocol">
+<meta property="og:url" content="https://blog.zhonjc.cn/2024/04/19/Internet%20Protocol/index.html">
+<meta property="og:site_name" content="怪奇语录 WeirdDrops">
+<meta property="og:description" content="网际协议 IP概述 网际协议 IP 是 TCP&#x2F;IP 体系最主要的两个协议之一，也是最重要的互联网标准协议之一。 与IP协议配套的使用的还有三个协议： 地址解析协议 ARP 网际控制报文协议 ICMP 网际组管理协议 IGMP 如图： .  将ARP置于网络层最下面，因为IP经常要使用这个协议（ARP置于网络层和数据链路层之间）。ICMP和IGMP置于网络层最上面，因为它们要使用协议IP">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2022-05-05%2020.52.17.png">
+<meta property="article:published_time" content="2024-04-19T06:08:57.000Z">
+<meta property="article:modified_time" content="2025-02-12T06:38:47.379Z">
+<meta property="article:author" content="Zhonjc">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2022-05-05%2020.52.17.png">
+  
+  
+  
+  <meta name="keywords" content="计算机网络">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+    <link rel="shortcut icon" href="/images/a">
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">怪奇语录 WeirdDrops</div><div class="sub cap">抛弃无用的情绪，做好该做的便可</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/02/12/%E9%87%91%E6%9D%91%E5%BF%AB%E7%BA%BF%20III%20%E6%9C%9F%E8%A7%84%E5%88%92%E5%85%AC%E5%B8%83/"><span class="title">金村快线 III 期规划公布</span></a><a class="item title" href="/2023/07/14/PicTest/"><span class="title">PicTest</span></a><a class="item title" href="/2023/07/14/ReviewIssues/"><span class="title">软件工程英文选择题摘录</span></a><a class="item title" href="/2023/07/14/TestExcerpt/"><span class="title">TestExcerpt</span></a><a class="item title" href="/2023/07/17/TestLaTeX/"><span class="title">TestLaTeX</span></a><a class="item title" href="/2023/08/09/%E4%BD%BF%E7%94%A8%20Git%20%E9%85%8D%E5%90%88%20Hexo%20%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%BE%91%E4%BA%91%E7%AB%AF%E5%8D%9A%E5%AE%A2/"><span class="title">使用 Git 配合 Hexo 实现本地编辑云端博客</span></a><a class="item title" href="/2023/07/15/%E4%BB%80%E4%B9%88%E6%98%AF-NAT-%EF%BC%9F/"><span class="title">什么是 NAT ？</span></a><a class="item title" href="/2024/03/05/%E5%85%B3%E4%BA%8E%20Xcode%2015%20%E9%80%9A%E8%BF%87%E9%9D%9E%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7%E5%9C%A8%20iOS%20%E8%AE%BE%E5%A4%87%E4%B8%8A%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%E7%9A%84%E5%9D%91/"><span class="title">关于 Xcode 15 在 iOS 设备上真机调试的坑</span></a><a class="item title" href="/2023/07/17/%E5%93%AA%E4%BA%9B%E5%87%BA%E8%B7%AF%EF%BC%9F/"><span class="title">有哪些出路？</span></a><a class="item title" href="/2023/08/01/%E5%A4%AE%E5%9B%BD%E4%BC%81%E5%8F%8C%E9%9D%9E%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9C%AC%E7%A7%91%E6%A0%A1%E6%8B%9B%E8%B0%83%E7%A0%94/"><span class="title">央国企双非计算机本科校招调研</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-04-19T06:08:57.000Z">2024-04-19</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-02-12T06:38:47.379Z">2025-02-12</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Internet Protocol</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="网际协议-IP"><a href="#网际协议-IP" class="headerlink" title="网际协议 IP"></a>网际协议 IP</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ol>
+<li>网际协议 IP 是 TCP&#x2F;IP 体系最主要的两个协议之一，也是最重要的互联网标准协议之一。</li>
+<li>与IP协议配套的使用的还有三个协议：<ol>
+<li>地址解析协议 ARP</li>
+<li>网际控制报文协议 ICMP</li>
+<li>网际组管理协议 IGMP</li>
+<li>如图：<br> . <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2022-05-05%2020.52.17.png"></li>
+<li>将ARP置于网络层最下面，因为IP经常要使用这个协议（ARP置于网络层和数据链路层之间）。ICMP和IGMP置于网络层最上面，因为它们要使用协议IP（作为IP层的SDU的一部分，使用IP层提供的服务）。</li>
+</ol>
+</li>
+</ol>
+<h3 id="虚拟互联网络"><a href="#虚拟互联网络" class="headerlink" title="虚拟互联网络"></a>虚拟互联网络</h3><ol>
+<li>为了实现网络互联，互通时需要解决许多问题。对于不同的网络，它们有不同的：<ol>
+<li>寻址方案</li>
+<li>最大分组长度</li>
+<li>网络接入机制</li>
+<li>超时控制</li>
+<li>差错恢复方法</li>
+<li>状态报告方法</li>
+<li>路由选择技术（部分网络有自己的路由转发，例如广域网）</li>
+<li>用户接入控制</li>
+<li>服务</li>
+<li>管理与控制方式</li>
+</ol>
+</li>
+<li>解决不同网络之间的互联问题，有两种方案：<ol>
+<li>所有主机都使用相同的网络。这是不可能的，它不能满足不同用户的需要，没有一种单一的网络能够适应所有用户的需求。而且这也不适应技术发展。</li>
+<li>使用中间设备。这才是正确的方案，可以满足不同需求。</li>
+</ol>
+</li>
+<li>中间设备有哪些种类呢？<ol>
+<li>物理层使用的中间设备叫做 转发器（例如集线器） 。</li>
+<li>数据链路层使用的中间设备有 以太网交换机、网桥、桥接器等</li>
+<li>在网络层使用的中间设备叫做 路由器 。</li>
+<li>在网络层以上使用的中间设备叫 网关 。用网关连接两个不兼容的系统，在高层进行协议转换。</li>
+</ol>
+</li>
+<li>注意，当中间设备是网桥或转发器等类似设备时，这仅仅是把一个单一的网络给扩大了，从网络层的角度看，这还是一个网络。</li>
+<li>由于参加互联的计算机网络都使用相同的IP协议，因此可以把互联后的计算机网络看成一个虚拟互联网络，即逻辑互联网络。互联起来的各种物理网络的异构性是真实存在的，但是利用IP协议就可以使这些性能各异的网络在网络层上看起来像是一个统一的网络。利用IP协议形成的虚拟互联网络可简称为IP网，IP网是虚拟的。在覆盖全球的IP网之上使用TCP协议簇，就是现在的因特网。![[截屏2022-05-05 21.16.31.png]]</li>
+<li><em>!UNIMPORTANT</em> 直接交付与间接交付。![[截屏2022-05-05 21.17.47.png]]</li>
+</ol>
+<h3 id="IP-地址"><a href="#IP-地址" class="headerlink" title="IP 地址"></a>IP 地址</h3><p><em><strong>!IMPORTANT</strong></em></p>
+<h6 id="IP-地址及其表示方法"><a href="#IP-地址及其表示方法" class="headerlink" title="IP 地址及其表示方法"></a>IP 地址及其表示方法</h6><ol>
+<li>整个互联网就是一个单一的、抽象的网络。而IP地址，就是给连接到互联网上的 <strong>每一台主机（或路由器）的 每一个接口</strong> ，分配一个 <strong>在全世界范围内是唯一</strong> 的 <strong>32位</strong> 的标识符。IP地址的结构可以使我们很方便的在互联网上进行寻址。IP地址现在由互联网名字和数字分配机构ICANN分配，而且是分级分配。</li>
+<li>IP地址都是32位的二进制代码。它的表示形式常常由等效的10进制数字表示，每8位二进制为一段，并且在每段数字之间加一个小数点，即 <strong>点分十进制记法</strong> 。</li>
+<li>IP地址不仅标志了某个主机（或路由器），还标志了某个网络（子网）。因此IP地址采用两级结构， <strong>由两个字段构成</strong> ：<ol>
+<li>网络号。标志主机（或路由器）所连接到的网络。一个网络号在整个互联网范围内必须是唯一的。</li>
+<li>主机号。标志该主机（或路由器）。一个主机号在所连接的网络内必须是唯一的。</li>
+</ol>
+</li>
+<li>IP 地址指明了 <strong>连接到某个网络上的一个主机或路由器</strong>。</li>
+<li>IP地址的前n位为网络号，后32-n位为主机号。n取决于IP地址的编址方式。![[截屏2022-05-05 21.54.11.png]]</li>
+</ol>
+<h6 id="分类的-IP地址"><a href="#分类的-IP地址" class="headerlink" title="分类的 IP地址"></a>分类的 IP地址</h6><ol>
+<li>分类的IP地址应用在早期的互联网。分类分为ABCDE类。</li>
+<li>A类（n&#x3D;8），B类（n&#x3D;16），C类（n&#x3D;24）。这些地址都是单播地址（一对一通信），是最常用的。D类是多播地址（一对多通信）。E类是保留地址。![[截屏2022-05-05 21.56.52.png]]</li>
+<li>如果给出一个二进制数表示的IP单播地址，则很容易就可以看出该地址属于哪一类，同时也能分辨网络号和地址号部分。</li>
+<li>A类地址的网络号占1B，并且只有7位可以使用，第一位已经固定为0。注意特殊情况：网络号全为0的IP地址表示本网络；网络号为01111111即127的IP地址作为本地软件回环测试之用。因此A类地址的网络号是126个。</li>
+<li>全0和全1的主机号一般不指派。全0的主机号表示该IP地址是本主机所连接到的单个网络的 <strong>网络地址</strong> （应该可用作标识网络）。全1表示所有的，即表示该网络下所有的主机。因此各个类网络下的最大主机数应该在总数-2。</li>
+<li>一般不使用的特殊IP地址：![[截屏2022-05-05 22.09.34.png]]<ol>
+<li>网络号为0，主机号为X，则可以表示在本网络上主机号为X的主机。</li>
+<li>全1，在本网络广播。</li>
+</ol>
+</li>
+<li>分类的IP地址，管理简单、使用方便、转发分组迅速。但是互联网发展迅速，IP快没了，分类的IP地址显现出了巨大的弊端：向组织或学校等分配IP地址网络号时，A类地址太多，而B类又太少不够，因此只能分配A类，造成了巨大的浪费。因此出现了一种新的无分类编址方法 CIDR 。</li>
+</ol>
+<h6 id="无分类编址-CIDR"><a href="#无分类编址-CIDR" class="headerlink" title="无分类编址 CIDR"></a>无分类编址 CIDR</h6><ol>
+<li><strong>CIDR 无分类域间路由选择</strong> 。</li>
+<li>CIDR 有三个要点：<ol>
+<li><strong>网络前缀</strong><ol>
+<li>CIDR 把网络号改称为 <strong>网络前缀</strong> ，用来指明网络，剩下的后面部分仍然是主机号，用来指明主机。</li>
+<li>网络前缀的 <strong>位数n不是固定的数</strong> ，而是 <strong>可以在0-32之间任意选取</strong> 的值。</li>
+<li><strong>斜线记法(CIDR 记法)</strong> ：在IP地址后面加上斜线’&#x2F;‘，斜线后是网络前缀所占的位数。</li>
+</ol>
+</li>
+<li><strong>地址块</strong><ol>
+<li>CIDR 把网络前缀都相同的所有连续的IP地址组成一个 <strong>CIDR 地址块</strong> 。</li>
+<li>一个 CIDR 地址块包含的IP地址数目，取决于网络前缀的位数。</li>
+<li>只要知道 CIDR 地址块中的任何一个地址，就可以知道这个地址块的起始地址和最大地址，以及地址块中有几个地址（可指派的地址数记得要减2）。</li>
+<li>我们常使用地址块的最小地址（主机号为0）和网络前缀的位数指明一个地址块。</li>
+<li>也可以用二进制代码简要地表示地址块：网络前缀的二进制数*。例如 10000000 00001110 0010* 就代表了128.14.32.0&#x2F;20。这里的星号表示了主机号字段的所有0。在不需要指明网络地址时，也可把这样的地址块简称为&#x2F;20地址块。</li>
+<li>几种表示法的注意：<ol>
+<li>128.14.32.7 是单一的IP地址，但是没有指明网络前缀位数，无法获取网络地址。</li>
+<li>128.14.32.7&#x2F;20 也是单一的IP地址，因为主机号并不是全0。指明了网络前缀位数，因此可以获取网络地址。</li>
+<li>128.14.32.0&#x2F;20 才是包含多个IP地址的地址块或网络前缀，同时也是这个地址块中主机号全为0的地址。可以省略十进制表示法中的最后的0，简写为128.14.32&#x2F;20。</li>
+<li>要想指明网络地址，就必须在IP地址中指明网络前缀的位数。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>地址掩码（子网掩码）</strong><ol>
+<li>32位的 地址掩码 能够使计算机从IP地址快速算出网络地址。</li>
+<li>地址掩码（可简称为掩码）由一连串1和接着的一连串0构成，而1的个数就是网络前缀的长度。在CIDR记法中，斜线后面的数字就是地址掩码中1的个数。</li>
+<li>把二进制的IP地址和地址掩码进行按位与计算，即可得出网络地址。</li>
+<li>常用的CIDR地址块![[截屏2022-05-06 15.34.28.png]]</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>每一个CIDR地址块中的地址数一定是2的整数次幂。当网络前缀位数大于24时，CIDR地址块都包含了多个C类地址，因此有时称CIDR编址为构造超网。</li>
+<li>CIDR 有3个特殊的地址块：<ol>
+<li>前缀n&#x3D;32。没有主机号，就是一个特殊的IP地址，用于主机路由。</li>
+<li>前缀n&#x3D;31。这个地址块中只有两个IP地址，其主机号分别为0和1。这个地址块用于点对点链路。</li>
+<li>前缀n&#x3D;0。同时IP地址也全是0，即0.0.0.0&#x2F;0。者用于默认路由。</li>
+</ol>
+</li>
+<li>使用CIDR，可以更加灵活有效地分配IP地址空间，可根据客户需要分配适当大小的CIDR地址块。</li>
+<li><strong>路由聚合</strong> ：一个大的CIDR地址块包含许多小CIDR地址块，所以在<u>路由器的转发表中就利用较大的一个CIDR地址块来代替许多小的CIDR地址块</u>(找网络，而不是找具体的主机)。这种方法称为路由聚合，它使得转发表中只用一个项目就可以表示原来传统分类地址的很多个路由项目，因而大大压缩了转发表所占的空间，减少了查找转发表所需的时间。</li>
+</ol>
+<h6 id="IP地址的特点"><a href="#IP地址的特点" class="headerlink" title="IP地址的特点"></a>IP地址的特点</h6><ol>
+<li>每一个IP地址都由网络前缀和主机号两部分组成。也就是说， <strong>IP地址是分等级的</strong> 。分两个等级的好处是：<ol>
+<li>IP地址管理结构在分配IP地址时只分配网络前缀，而剩下的主机号则由得到该网络前缀的单位自行分配。方便了IP地址的管理。</li>
+<li>路由器根据目的主机所连接的网络前缀来转发分组， <strong>不考虑目的主机号</strong> ，这样可以使转发表中的项目数大幅减少。减少存储占用，缩短查找时间。</li>
+</ol>
+</li>
+<li>实际上， <strong>IP 地址是标志一台主机（或路由器）和一条链路的接口</strong> 。<ol>
+<li>多归属主机：当一台主机同时连接到两个网络上时，该主机就必须同时具有两个相应的IP地址，其网络号必然是不同的。这种主机称为多归属主机。</li>
+</ol>
+</li>
+<li>一个网络是指具有相同网络前缀的主机的集合，因此，用转发器或交换机连接起来的若干个局域网仍为一个网络，它们都具有相同的网络前缀。</li>
+<li>互联网同等对待每一个IP地址。</li>
+<li>路由器总是具有两个或两个以上的IP地址。即 <strong>路由器每个接口的IP地址的网络前缀都不同</strong> 。同一个网络的主机或路由器端口的IP地址中的网络号必须一样。</li>
+<li>当两个路由器直接相连，在连线两端的接口处，可以分配也可以不分配IP地址。如果分配了IP地址，则这一段连线就构成了一种只包含一段线路的特殊网络（叫网络是因为有IP地址）。这种网络仅需两个IP地址，因此这里就使用了&#x2F;31地址块。这种地址块专门为点对点链路的两端使用，主机号只有2种可能，0和1。但为了节省IP地址资源，对于这种网络，常常不分配IP地址。</li>
+</ol>
+<h3 id="IP-地址与-MAC-地址"><a href="#IP-地址与-MAC-地址" class="headerlink" title="IP 地址与 MAC 地址"></a>IP 地址与 MAC 地址</h3><ol>
+<li>MAC地址常称为物理地址&#x2F;硬件地址，对应的，IP地址也被称为虚拟地址&#x2F;软件地址&#x2F;逻辑地址，IP地址是用软件实现的。</li>
+<li>从层次的角度看，MAC地址是数据链路层使用的地址，IP地址是网络层和以上各层使用的地址，是一种逻辑地址。</li>
+<li>在发送地址时，数据从高层向低层，然后在链路上传输。使用IP地址的IP分组交给数据链路层之后，就被封装成MAC帧。MAC帧在传送时使用的源地址和目的地址都是MAC地址，这两个MAC地址都写在MAC帧的首部中。</li>
+<li>连接在通信链路上的设备在收到MAC帧时，根据MAC帧首部中的MAC地址决定收下或丢弃。只有在剥去MAC帧首部和尾部后，把MAC层的数据上交给网络层后，网络层才能在IP数据报的首部中找到源IP地址和目的IP地址。</li>
+<li>交换机是数据链路层设备，只有MAC地址，没有IP地址，最高只有链路层，没有网络层。因此在网络层看时，交换机可以当做不存在。</li>
+<li>注意：<ol>
+<li>在IP层抽象的互联网上只能看到IP数据报。在IP分组传输的过程中，虽然要经过多个路由器的转发，但是在IP分组的首部中， <strong>源IP和目标IP永远不变</strong> 。经过的路由器并不会出现在IP分组中。</li>
+<li>对于路由器来说，源IP地址是没用的。 <strong>路由器只根据目的站的IP地址进行转发</strong> 。</li>
+<li>在局域网的链路层，只能看到MAC帧。MAC帧在不同网络上传送时，其MAC帧首部中的源地址和目标地址要发生变化。当一台局域网内的主机向别的网络内的主机发送数据时，MAC帧首部中源地址就是自己，而目标地址是该局域网的路由器的MAC地址（MAC帧到达交换机后，会根据MAC地址，决定转发到接路由器的端口）。到达路由器后，在网络层抽出IP分组，获得目标IP地址，查询转发表，获取下一跳的目的地和对应的转发端口，（光查询，并不更改IP分组内的IP头）然后下到链路层，再加上链路层的首部，此时源MAC地址是路由器的MAC地址，目标地址是下一跳的MAC地址。</li>
+<li>尽管互连在一起的网络的 MAC 地址体系各不相同，但 IP 层抽象的互联网却屏蔽了下层这些很复杂的细节。只要我们在网络层上讨论问题，就能够使用统一的、抽象的 IP 地址研究主机和主机或路由器之间的通信。</li>
+<li>在网络层下到数据链路层时，为了根据目标IP地址获取数据链路层传输所需要的目标MAC地址，需要运行ARP协议。</li>
+</ol>
+</li>
+</ol>
+<h3 id="地址解析协议-ARP"><a href="#地址解析协议-ARP" class="headerlink" title="地址解析协议 ARP"></a>地址解析协议 ARP</h3><p>实现IP通信时使用了两个地址：IP地址和MAC地址。而实际上用于链路传输的是MAC地址。在传输时，必须将目标IP地址转换为在当前网络内通往该目标IP方向的MAC地址。这就用到了ARP协议。（注意ARP运行在每一台主机或路由器，每一台主机或路由器都有自己的ARP高速缓存；而以太网交换机的自学习算法是处在中心的。）</p>
+<ol>
+<li><strong>ARP 运行步骤</strong><ol>
+<li>每一台主机都设有一个 <strong>ARP高速缓存</strong> ，里面存有 <strong>本局域网（注意映射只在本局域网有效）</strong> 上的各主机和路由器的IP地址到MAC地址的映射表，这些都是该主机目前知道的一些MAC地址。</li>
+<li>当主机A要向<u style="border-bottom:5px solid black;text-decoration:none;font-weight:900;">本局域网</u>上的某台主机B发送IP数据报时，就先在其ARP高速缓存中查看有无主机B的IP地址。<ol>
+<li>若有，就在ARP高速缓存中查出其对应的MAC地址，再把这个MAC地址写入MAC帧，然后通过局域网把该MAC帧发往此MAC地址。</li>
+<li>若没有，（有可能是B才入网，也有可能是A才加电）主机A就自动运行ARP，然后按以下步骤找出主机B的MAC地址：<ol>
+<li>ARP进程在本局域网上广播发送一个ARP请求分组。该分组的主要内容包含 发送方的硬件地址、发送方的IP地址、目标方的硬件地址（此时未知，填0）、目标方的IP地址。意思就是：我的IP地址是XXX，MAC地址是YYY，我想知道IP地址为ZZZ的主机的MAC地址。</li>
+<li>在本局域网上的所有主机上运行的ARP进程都收到此ARP请求分组。路由器不会转发ARP请求。</li>
+<li>主机B的IP地址与ARP请求分组中要查询的IP地址一致，就收下这个ARP请求分组，并向主机A发送ARP响应分组，同时在这个ARP响应分组中写入自己的MAC地址。其他主机发现ARP请求分组内要查的IP不是自己就都不理会。（ARP响应分组是单播的，从一个源地址发送到一个目的地址。它包含 发送方的硬件地址、发送方的IP地址、目标方的硬件地址、目标方的IP地址。意思就是：我的IP地址是MMM，我的MAC地址是CCC。）</li>
+<li>主机A在发送ARP请求分组时，会把自己的MAC和IP地址写入ARP请求分组。当主机B收到A的ARP请求分组时，就把主机A的这一地址映射写入主机B自己的ARP高速缓存中。这样B在以后向A发送数据报时就很方便了。</li>
+<li>主机A收到ARP响应分组后，就在其ARP高速缓存中写入主机B的IP地址到MAC地址的映射。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>ARP对保存在高速缓存中的每一个映射地址项目 <strong>都设置生存时间</strong> 。凡超过生存时间的项目就从高速缓存中删除掉，以保证映射的正确。</li>
+<li><strong>注意：</strong> ARP用来解决 <strong>同一局域网上</strong> 的主机或路由器的IP地址和MAC地址的映射问题。<ol>
+<li>如果所要找的主机H<sub>2</sub>和源主机H<sub>1</sub>不再同一个局域网上，源主机就无法解析出另一个局域网上的目标主机的MAC地址。但实际上， <strong>源主机也不需要知道异构网络的目标主机的MAC地址。</strong></li>
+<li>主机H1发送给主机H2的IP分组，首先需要通过H1连接在同一个局域网上的路由器R1进行转发，主机是知道路由器的IP地址的，<u>因此主机H1需要知道的是路由器R1的IP地址对MAC的映射。</u></li>
+<li>H1使用ARP把路由器R1的IP地址解析为路由器的MAC地址，然后把IP分组发出，这时链路会把分组发送到路由器R1。以后<u>R1在网络层通过转发表知道应该把IP分组转发到哪个网络结点，再使用ARP解析出该结点的MAC地址，然后到达链路层加到MAC帧头部然后发出，以此类推，最后一跳由目标主机的路由器解析出目标主机的MAC地址。</u>也就是说，<strong>ARP只会把IP地址解析到当前网络的某个设备的MAC地址，而不会把地址解析到最终目的的MAC地址</strong>，这是没必要的，也是没可能的，MAC地址是运用在同一个网络内的，只要在同一网络内知道下一跳的地址即可（路由器端口也属于网络内），<u>要传往不在同一个网络的主机只需要转发给路由器，一切交给网络层就行。</u></li>
+</ol>
+</li>
+<li>ARP协议是自动运行的，主机的用户对这种地址解析过程是不知情的。</li>
+</ol>
+</li>
+<li>ARP的四种典型情况<ol>
+<li>发送方是主机，要把 IP 数据报发送到本网络上的另一个主机。这时用 ARP 找到目的主机的硬件地址。</li>
+<li>发送方是主机，要把 IP 数据报发送到另一个网络上的一个主机。这时用 ARP 找到本网络上的一个路由器的硬件地址。剩下的工作由这个路由器来完成。</li>
+<li>发送方是路由器，要把 IP 数据报转发到本网络上的一个主机。这时用 ARP 找到目的主机的硬件地址。</li>
+<li>发送方是路由器，要把 IP 数据报转发到另一个网络上的一个主机。这时用 ARP 找到本网络上另一个路由器的硬件地址。剩下的工作由这个路由器来完成。</li>
+</ol>
+</li>
+<li>有了MAC地址还要IP干啥<ol>
+<li>全世界存在着各式各样的网络，它们使用不同的MAC地址。要使它们能够互相通信就必须进行非常复杂的MAC地址转换工作，因此由用户或用户主机来完成这项工作几乎是不可能的事。即使是对分布在全世界的以太网MAC地址进行寻址，也是极其困难的。然而IP编址把这个问题解决了。<del>路由器可以转换不同网络类型的MAC帧？</del> 即使必须多次调用ARP来找到下一跳MAC地址，但这个过程对用户来说是无感的。</li>
+</ol>
+</li>
+</ol>
+<h3 id="IP-数据报的格式"><a href="#IP-数据报的格式" class="headerlink" title="IP 数据报的格式"></a>IP 数据报的格式</h3><ol>
+<li>一个IP数据报由首部和数据两部分组成。<ol>
+<li>首部的一部分长度是固定的，<strong>共20字节</strong>，是所有IP数据报所必须具有的。在首部的固定部分的后面是一些可选字段，其长度是可变的。</li>
+<li>IP分组的首部长度 <strong>必须是4B的整数倍。</strong> 如果不是4B的 整数倍，必须有填充字段加以填充。</li>
+<li>整个首部的 <strong>最长长度为60Byte。</strong></li>
+<li>一般情况下首部就20B，即不使用可变首部。</li>
+<li>具体格式：![[截屏2022-05-12 19.23.17.png]]</li>
+</ol>
+</li>
+<li><em><strong>!!IMPORTANT 各个字段：</strong></em><ol>
+<li>4b 版本字段：协议IP的版本。通信双方所使用的IP协议的版本必须相同。</li>
+<li>4b 首部长度字段：表示首部的长度。注意，首部长度字段所表示数的<u>单位是32b</u>。首部长度字段最小为0101，代表只有固定首部部分，没有可变首部，总长度为5*32b&#x3D;20B；最大为1111，代表首部总长15*32b&#x3D;60B。</li>
+<li>8b 区分服务字段：用于获取更好地服务。只有在区分服务时这个字段才起作用。</li>
+<li>16b 总长度字段：首部和数据之和的长度，<strong>字段单位为字节</strong>。可得出IPv4数据报最大长度为2<sup>16</sup> -1&#x3D; <strong>65535字节。</strong> <ul>
+<li>注意，IP数据报的长度要遵守低层的MTU限制。如果超了，则需要把过长的数据报进行<strong>分片处理。</strong></li>
+<li>IP协议规定，所有主机和路由必须能够接受长度≤576B的数据报。</li>
+<li>分片过后，总长度字段的值是分片后<u>每一个IP分片的长度。</u></li>
+</ul>
+</li>
+<li>16b 标识字段：IP软件在存储器中维持一个计数器，每产生一个数据报，计数器就加 1 ，并将此值赋给标识字段。注意<u>这并不是序号</u>，IP是无连接的，不存在按序接收的问题。标识字段的作用体现在当IP数据报需要被分片时，其标识字段会被复制到所有的数据报片的标识字段中。<u>相同的标识字段使得分片后的各数据报片能够正确重组。</u> </li>
+<li>3b 标志字段：目前只有两位有意义。<ol>
+<li>低位为MF(More Fragment)。MF&#x3D;1代表后面还有分片的数据报。MF&#x3D;0表示这已经是若干数据报片的最后一个。</li>
+<li>中位为DF(Do not Fragment)。DF&#x3D;1时不允许该数据报被分片，DF&#x3D;0时允许分片。</li>
+</ol>
+</li>
+<li>13b 片偏移字段：数据报被分片后，各个分片在原数据报中的相对位置。片偏移以8B为偏移单位，这也就是说，除最后一个数据报片外，其他每个分片的长度一定是8B的整数倍。例如：![[截屏2022-05-12 19.56.38.png]]<ul>
+<li>其中，<u>每个分片的标识字段都相同</u>，就是原先未分片的数据报的标识字段。</li>
+<li>如果分片后还要再分，那么<u>新分片的片偏移依旧是相对于最原先的数据报。</u></li>
+<li>各个分片字段的变化：![[截屏2022-05-12 20.06.02.png]]</li>
+</ul>
+</li>
+<li>8b 生存时间字段 TTL ：数据报在网络中的寿命。目的是防止IP数据报兜圈子。以前的单位是时间，而现在的单位是 <strong>跳数</strong> ，TTL字段的功能也就变成了 跳数限制 。路由器在每次转发之前就把TTL减1。若TTL减小到0还没有到达目标则丢弃该数据报。TTL长8位，因此最大跳数为255。</li>
+<li>8b 协议字段：指出此数据报携带的数据使用何种协议，让目的主机知道应该将数据部分上交给哪个协议。![[截屏2022-05-12 20.16.11.png]]</li>
+<li>16b 首部校验和：只检验数据报的首部，不包括数据部分。数据报每经过一个路由器都会重新计算一下首部校验和（一些字段会发生变化）。使用网际校验和算法。</li>
+<li>32b 源地址</li>
+<li>32b 目的地址</li>
+<li>可变首部：就是一个选项字段，用于支持排错、测量以及安全等措施。<u>长度可变，最短1B，最长40B，</u><u style="text-decoration:none;border-bottom:3px solid black">最后用全0来填充以保证4B的整数倍。</u></li>
+</ol>
+</li>
+</ol>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/02/12/%E9%87%91%E6%9D%91%E5%BF%AB%E7%BA%BF%20III%20%E6%9C%9F%E8%A7%84%E5%88%92%E5%85%AC%E5%B8%83/">金村快线 III 期规划公布</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/04/13/%E9%87%91%E6%9D%91%E5%BF%AB%E7%BA%BF%202%20%E5%8F%B7%E7%BA%BF/">欢迎来到 金村快线 2 号线</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar 1.27.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE-IP"><span class="toc-text">网际协议 IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E4%BA%92%E8%81%94%E7%BD%91%E7%BB%9C"><span class="toc-text">虚拟互联网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-%E5%9C%B0%E5%9D%80"><span class="toc-text">IP 地址</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#IP-%E5%9C%B0%E5%9D%80%E5%8F%8A%E5%85%B6%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-text">IP 地址及其表示方法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E7%9A%84-IP%E5%9C%B0%E5%9D%80"><span class="toc-text">分类的 IP地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80-CIDR"><span class="toc-text">无分类编址 CIDR</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">IP地址的特点</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-%E5%9C%B0%E5%9D%80%E4%B8%8E-MAC-%E5%9C%B0%E5%9D%80"><span class="toc-text">IP 地址与 MAC 地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE-ARP"><span class="toc-text">地址解析协议 ARP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-text">IP 数据报的格式</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

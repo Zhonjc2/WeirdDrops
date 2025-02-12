@@ -1,0 +1,586 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 7.2.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>使用 Git 配合 Hexo 实现本地编辑云端博客 - 怪奇语录 WeirdDrops</title>
+
+  
+    <meta name="description" content="使用 Git 云端仓库 配合 Hexo 实现本地编辑云端博客。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Git 配合 Hexo 实现本地编辑云端博客">
+<meta property="og:url" content="https://blog.zhonjc.cn/2023/08/09/%E4%BD%BF%E7%94%A8%20Git%20%E9%85%8D%E5%90%88%20Hexo%20%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%BE%91%E4%BA%91%E7%AB%AF%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="怪奇语录 WeirdDrops">
+<meta property="og:description" content="使用 Git 云端仓库 配合 Hexo 实现本地编辑云端博客。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.27.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.49.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.07.28.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.15.26.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.16.42.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.17.49.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.25.14.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.27.16.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.38.16.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.38.16.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.51.13.png">
+<meta property="og:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.53.34.png">
+<meta property="article:published_time" content="2023-08-09T08:50:23.000Z">
+<meta property="article:modified_time" content="2025-02-12T06:38:47.380Z">
+<meta property="article:author" content="Zhonjc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.zhonjc.cn/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.27.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+    <link rel="shortcut icon" href="/images/a">
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">怪奇语录 WeirdDrops</div><div class="sub cap">抛弃无用的情绪，做好该做的便可</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/02/12/%E9%87%91%E6%9D%91%E5%BF%AB%E7%BA%BF%20III%20%E6%9C%9F%E8%A7%84%E5%88%92%E5%85%AC%E5%B8%83/"><span class="title">金村快线 III 期规划公布</span></a><a class="item title" href="/2023/07/14/PicTest/"><span class="title">PicTest</span></a><a class="item title" href="/2023/07/14/ReviewIssues/"><span class="title">软件工程英文选择题摘录</span></a><a class="item title" href="/2023/07/14/TestExcerpt/"><span class="title">TestExcerpt</span></a><a class="item title" href="/2023/07/17/TestLaTeX/"><span class="title">TestLaTeX</span></a><a class="item title" href="/2023/08/09/%E4%BD%BF%E7%94%A8%20Git%20%E9%85%8D%E5%90%88%20Hexo%20%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%BE%91%E4%BA%91%E7%AB%AF%E5%8D%9A%E5%AE%A2/"><span class="title">使用 Git 配合 Hexo 实现本地编辑云端博客</span></a><a class="item title" href="/2023/07/15/%E4%BB%80%E4%B9%88%E6%98%AF-NAT-%EF%BC%9F/"><span class="title">什么是 NAT ？</span></a><a class="item title" href="/2024/03/05/%E5%85%B3%E4%BA%8E%20Xcode%2015%20%E9%80%9A%E8%BF%87%E9%9D%9E%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7%E5%9C%A8%20iOS%20%E8%AE%BE%E5%A4%87%E4%B8%8A%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%E7%9A%84%E5%9D%91/"><span class="title">关于 Xcode 15 在 iOS 设备上真机调试的坑</span></a><a class="item title" href="/2023/07/17/%E5%93%AA%E4%BA%9B%E5%87%BA%E8%B7%AF%EF%BC%9F/"><span class="title">有哪些出路？</span></a><a class="item title" href="/2023/08/01/%E5%A4%AE%E5%9B%BD%E4%BC%81%E5%8F%8C%E9%9D%9E%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9C%AC%E7%A7%91%E6%A0%A1%E6%8B%9B%E8%B0%83%E7%A0%94/"><span class="title">央国企双非计算机本科校招调研</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-08-09T08:50:23.000Z">2023-08-09</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-02-12T06:38:47.380Z">2025-02-12</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>使用 Git 配合 Hexo 实现本地编辑云端博客</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p><strong>注意：该文章内容可能存在错误。</strong></p>
+<ul>
+<li>本博客尚未配置 CDN ，图片可能加载较慢。</li>
+</ul>
+<p>使用 Git 云端仓库 配合 Hexo 实现本地编辑云端博客。</p>
+<p>起初，使用自己的云服务器，配置了 Hexo 博客。然而 Hexo 有一个很不好的点，就是新增和编辑博客非常麻烦。一开始想通过 SSH 来实现实时同步，同时使用 Obsidian 来对博客目录进行操作。然而，Obsidian 并不支持使用自己的 SSH 服务器，也没有支持的插件。VSCode 可以，但是并不想用 VSCode 来编写 MarkDown 文件，因为其没有实时预览。后面又想到使用 macOS 的访达连接 FTP 服务器，但是不知道为什么 macOS 抽风，FTP 一直连不上，SMB 也连不上，实际上，我从来没成功用访达连接成功过任何云服务器。</p>
+<p>后来没有办法，只能使用 Hexo Admin 凑活用。</p>
+<p>后来想到了 Git 。Git 是一种版本控制工具，它本不是用来进行文件同步的，而是进行分布式开发的。但是，我们可以利用 Git 的远程仓库，以及 Crontab 自动执行命令，自动拉取更新，来实现客户端编辑好后 push ，云端工作目录自动 pull ，从而更新博客。</p>
+<h2 id="Git-部分"><a href="#Git-部分" class="headerlink" title="Git 部分"></a>Git 部分</h2><ul>
+<li>注意区分 Git 仓库和 Obsidian 仓库。该章节下所有仓库指的都是 Git 远程仓库，Obsidian 仓库在此章节下说明为 Obsidian Vault 。</li>
+</ul>
+<h3 id="创建裸远程仓库"><a href="#创建裸远程仓库" class="headerlink" title="创建裸远程仓库"></a>创建裸远程仓库</h3><ul>
+<li>对于远程仓库，一般创建的都是裸仓库。因为我们没有必要在远程仓库内部对仓库内容进行更新，这是专用于客户端工作目录进行操作的仓库。</li>
+<li>关于裸远程仓库，可以看看我的关于 Git 的博客：<a href="/_posts/Git%20%E4%BD%BF%E7%94%A8%E6%8F%90%E9%86%92.md">Git 使用提醒</a></li>
+<li>创建仓库的位置最好放在博客目录外，仓库名设置为 source.git ，这是为了在 Hexo 中 clone 名字为 source 的仓库，source 即 Hexo 博客的内容。其他名称无法将博客内容 add 到仓库中。</li>
+</ul>
+<p><code>git init --bare source.git</code></p>
+<h3 id="移出-Hexo-博客内容（source-目录）"><a href="#移出-Hexo-博客内容（source-目录）" class="headerlink" title="移出 Hexo 博客内容（source 目录）"></a>移出 Hexo 博客内容（source 目录）</h3><ul>
+<li>之前已经在 Hexo 中发布过一些内容。因为我们要将这些内容添加到新仓库中，唯一的做法就是先把原先内容（整个 source 目录）移出到其他目录下，然后在 Hexo 目录下 clone 一个名叫 source 的仓库，再将原博客内容移入。</li>
+</ul>
+<p><code>mv hexo/source hexo/backup_source</code></p>
+<h3 id="在云端的-Hexo-博客根目录下通过-clone-创建新的-source-目录"><a href="#在云端的-Hexo-博客根目录下通过-clone-创建新的-source-目录" class="headerlink" title="在云端的 Hexo 博客根目录下通过 clone 创建新的 source 目录"></a>在云端的 Hexo 博客根目录下通过 clone 创建新的 source 目录</h3><ul>
+<li>将刚刚创建的云端仓库，在云端服务器的 Hexo 博客目录下，进行 clone ，创建新的 source 目录。</li>
+</ul>
+<p><code>git clone source.git</code></p>
+<h3 id="将原先的-source-目录内容移入新-source-目录"><a href="#将原先的-source-目录内容移入新-source-目录" class="headerlink" title="将原先的 source 目录内容移入新 source 目录"></a>将原先的 source 目录内容移入新 source 目录</h3><p><code>mv hexo/backup_source/* hexo/source/</code></p>
+<h3 id="使-source-下的文件被-Git-追溯"><a href="#使-source-下的文件被-Git-追溯" class="headerlink" title="使 source 下的文件被 Git 追溯"></a>使 source 下的文件被 Git 追溯</h3><p><code>git add .</code></p>
+<h3 id="提交并推送"><a href="#提交并推送" class="headerlink" title="提交并推送"></a>提交并推送</h3><p><code>git commit -m &#39;init&#39;</code><br><code>git push</code></p>
+<h3 id="配置服务端自动拉取更新"><a href="#配置服务端自动拉取更新" class="headerlink" title="配置服务端自动拉取更新"></a>配置服务端自动拉取更新</h3><ul>
+<li>这里采用的方法是 Crontab ，实际上这个方法个人觉得不是太适合。</li>
+</ul>
+<p><code>crontab -e</code><br>然后编写：<br><code>*/1 * * * * cd 你的source工作目录;git pull</code><br>保存并退出</p>
+<h2 id="Obsidian-部分"><a href="#Obsidian-部分" class="headerlink" title="Obsidian 部分"></a>Obsidian 部分</h2><h3 id="在客户端-clone-云端仓库"><a href="#在客户端-clone-云端仓库" class="headerlink" title="在客户端 clone 云端仓库"></a>在客户端 clone 云端仓库</h3><p><code>git clone 用户@IP地址:source.git远程仓库位置</code></p>
+<ul>
+<li>注：需要提前配置好 SSH 及其免密登陆，以及专用于更新博客的 Git 用户。</li>
+</ul>
+<h3 id="用-Obsidian-打开-clone-好的工作目录"><a href="#用-Obsidian-打开-clone-好的工作目录" class="headerlink" title="用 Obsidian 打开 clone 好的工作目录"></a>用 Obsidian 打开 clone 好的工作目录</h3><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.27.png" alt=" File - Open Vault "><br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.05.49.png" alt="选择打开，选择刚刚 clone 好的工作目录"><br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.07.28.png" alt="进入 Obsidian"></p>
+<h3 id="Obsidian-安装-Obsidian-Git-插件-简化客户端博客推送流程"><a href="#Obsidian-安装-Obsidian-Git-插件-简化客户端博客推送流程" class="headerlink" title="Obsidian 安装 Obsidian Git 插件 简化客户端博客推送流程"></a>Obsidian 安装 Obsidian Git 插件 简化客户端博客推送流程</h3><ul>
+<li>Obsidian 有一个第三方插件，叫 Obsidian Git，该插件在 Obsidian 内置了 Git 命令。</li>
+<li>只需要打开的 Obsidian Vault 为一个正常的 Git 工作目录（包含 .git 文件夹），就可以直接使用这个插件执行 git 命令。</li>
+<li>似乎这个插件没有 git add，而直接 git commit 便可以。</li>
+</ul>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.15.26.png"></p>
+<ul>
+<li>当博客内容有新变化时，便可以按下 Command + P 打开 Obsidian 命令面板，输入 git commit 查找到该插件的操作，回车即可。<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.16.42.png"></li>
+<li>推送时和 commit 一样。<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.17.49.png"></li>
+</ul>
+<h3 id="创建笔记模版"><a href="#创建笔记模版" class="headerlink" title="创建笔记模版"></a>创建笔记模版</h3><ul>
+<li><p>来自 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000042111566?sort=newest">https://segmentfault.com/a/1190000042111566?sort=newest</a></p>
+</li>
+<li><p>为了在 Obsidian 创建笔记时，方便添加 Hexo 的 Front-matter，可以在 Obsidian 中创建模版。</p>
+</li>
+<li><p>在本地工作目录下，创建 _obsidian 目录，并在目录下新建 Post Template 文件，格式为 md 。最好在 Obsidian 内新建该文件。在文件内添加内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123;title&#125;&#125;</span><br><span class="line">date: &#123;&#123;date&#125;&#125;</span><br><span class="line">author: 你的作者名称</span><br><span class="line">tags: []</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+<li><p>然后进入 Obsidian 设置 - 核心插件 - 模版 将其打开，然后点击切换按钮旁的设置按钮，进入模版设置。</p>
+</li>
+<li><p>在模版设置下，将相关设置改为：</p>
+<ul>
+<li>模版文件夹位置内容为 _obsidian</li>
+<li>日期格式为 YYYY-MM-DD HH:mm:ss</li>
+<li><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.25.14.png"></li>
+</ul>
+</li>
+<li><p>之后新建新博客时，只需要点击 Obsidian 侧边栏的 插入模版 按钮即可。<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.27.16.png"></p>
+</li>
+</ul>
+<h3 id="修改-Obsidian-媒体链接格式"><a href="#修改-Obsidian-媒体链接格式" class="headerlink" title="修改 Obsidian 媒体链接格式"></a>修改 Obsidian 媒体链接格式</h3><ul>
+<li>Obsidian 默认拖入的媒体文件，在笔记内的链接格式是 Wiki 链接。</li>
+<li>为了 Hexo 主题进行正确识别媒体链接，需要将 Obsidian 设置中的 使用 Wiki 链接 关闭。<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.38.16.png"></li>
+</ul>
+<h3 id="修改-Obsidian-的附件默认存放路径"><a href="#修改-Obsidian-的附件默认存放路径" class="headerlink" title="修改 Obsidian 的附件默认存放路径"></a>修改 Obsidian 的附件默认存放路径</h3><ul>
+<li>Obsidian 默认新添加的附件存储在 Obsidian Vault 的根目录，我们需要将附件文件夹路径修改为 Hexo 的附件位置。</li>
+<li>除此之外，还需要将 内部链接类型修改为 基于仓库根目录的绝对路径。<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.38.16.png"></li>
+<li>现在，你可以直接将本地的附件，粘贴到 Obsidian 笔记中，Obsidian 会自动将附件复制到附录文件夹下，并在笔记中给出正确的链接路径。</li>
+<li>但是，Obsidian 给出的链接路径，在 Hexo 中无法找到，需要在链接头部多加一个 ‘&#x2F;‘ 才能在 Hexo 中正确找到。</li>
+<li><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.51.13.png"></li>
+</ul>
+<h2 id="目前状态"><a href="#目前状态" class="headerlink" title="目前状态"></a>目前状态</h2><ul>
+<li>目前的体验还不错，但是还有一些问题：<ul>
+<li>Crontab 每隔一分钟拉取，每次推送完得等一等才更新，在未来或许可以使用 Git 远程仓库自带的 Hooks 来实现即时 pull ；</li>
+<li>Obsidian 新添加的附件，在经过相关设置后，笔记内的附件链接几乎完美，但是有一个缺点就是需要在链接头部加一个 ‘&#x2F;‘，要不然 Hexo 找不到，这个经常忘记 😓。</li>
+<li><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/%E6%88%AA%E5%B1%8F2023-08-09%2017.53.34.png"></li>
+</ul>
+</li>
+</ul>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/08/18/CDN%20%E4%B8%8B%E7%9A%84%E5%AA%92%E4%BD%93%E8%B4%9F%E8%BD%BD%E6%B5%8B%E8%AF%95/">图片负载测试</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/08/09/Git%20%E4%BD%BF%E7%94%A8%E6%8F%90%E9%86%92/">Git 使用提醒</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar 1.27.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-%E9%83%A8%E5%88%86"><span class="toc-text">Git 部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%A3%B8%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">创建裸远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%87%BA-Hexo-%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9%EF%BC%88source-%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-text">移出 Hexo 博客内容（source 目录）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E4%BA%91%E7%AB%AF%E7%9A%84-Hexo-%E5%8D%9A%E5%AE%A2%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8B%E9%80%9A%E8%BF%87-clone-%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84-source-%E7%9B%AE%E5%BD%95"><span class="toc-text">在云端的 Hexo 博客根目录下通过 clone 创建新的 source 目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E5%8E%9F%E5%85%88%E7%9A%84-source-%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9%E7%A7%BB%E5%85%A5%E6%96%B0-source-%E7%9B%AE%E5%BD%95"><span class="toc-text">将原先的 source 目录内容移入新 source 目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF-source-%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6%E8%A2%AB-Git-%E8%BF%BD%E6%BA%AF"><span class="toc-text">使 source 下的文件被 Git 追溯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E5%B9%B6%E6%8E%A8%E9%80%81"><span class="toc-text">提交并推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96%E6%9B%B4%E6%96%B0"><span class="toc-text">配置服务端自动拉取更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Obsidian-%E9%83%A8%E5%88%86"><span class="toc-text">Obsidian 部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%AE%A2%E6%88%B7%E7%AB%AF-clone-%E4%BA%91%E7%AB%AF%E4%BB%93%E5%BA%93"><span class="toc-text">在客户端 clone 云端仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8-Obsidian-%E6%89%93%E5%BC%80-clone-%E5%A5%BD%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="toc-text">用 Obsidian 打开 clone 好的工作目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Obsidian-%E5%AE%89%E8%A3%85-Obsidian-Git-%E6%8F%92%E4%BB%B6-%E7%AE%80%E5%8C%96%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8D%9A%E5%AE%A2%E6%8E%A8%E9%80%81%E6%B5%81%E7%A8%8B"><span class="toc-text">Obsidian 安装 Obsidian Git 插件 简化客户端博客推送流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0%E6%A8%A1%E7%89%88"><span class="toc-text">创建笔记模版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-Obsidian-%E5%AA%92%E4%BD%93%E9%93%BE%E6%8E%A5%E6%A0%BC%E5%BC%8F"><span class="toc-text">修改 Obsidian 媒体链接格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-Obsidian-%E7%9A%84%E9%99%84%E4%BB%B6%E9%BB%98%E8%AE%A4%E5%AD%98%E6%94%BE%E8%B7%AF%E5%BE%84"><span class="toc-text">修改 Obsidian 的附件默认存放路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E7%8A%B6%E6%80%81"><span class="toc-text">目前状态</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
