@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "mntips/index.md",
+                "file": "_posts/金村快线 III 期规划公布.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "金村快线 III 期规划公布"
             }
           }
         ],
@@ -186,8 +186,9 @@
   },
   "active": "b5ffad3f60877a5f",
   "lastOpenFiles": [
-    "_posts/TestLaTeX.md",
+    "mntips/index.md",
     "_posts/金村快线 III 期规划公布.md",
+    "_posts/TestLaTeX.md",
     "images/GFL3.png",
     "_posts/金村快线 2 号线.md",
     "_posts/Internet Protocol.md",
@@ -216,7 +217,6 @@
     "_posts/Git 使用提醒.md",
     "_posts/欢迎来到-Zho-s-Blog.md",
     "_posts/考研院校.md",
-    "mntips/index.md",
     "images/1cb80d6afff42414496fb2e819f5fe54_2545001388376647547.mp4",
     "未命名.canvas",
     "_obsidian/Post Template.md",
