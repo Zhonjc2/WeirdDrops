@@ -4,6 +4,7 @@ date: 2025-02-12 15:14:21
 author: Zhonjc
 tags: 
 cover: /images/GFL3.png
+description: 金村集团权威发布
 ---
 ![](/images/logo.png)
 
