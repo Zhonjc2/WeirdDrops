@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/马上要复试.md",
+                "file": "Test 2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "马上要复试"
+              "title": "Test 2"
+            }
+          },
+          {
+            "id": "0603523be08b659c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/关于 IPv6 实现公网访问的探索与应用.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "关于 IPv6 实现公网访问的探索与应用"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -169,21 +184,25 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ad7665825773bf61",
+  "active": "0603523be08b659c",
   "lastOpenFiles": [
+    "_posts/关于 IPv6 实现公网访问的探索与应用.md",
+    "todos/index.md",
+    "tags/index.md",
+    "mntips/index.md",
+    "TestPage/index.md",
+    "_posts/马上要复试.md",
     "_posts/CDN 下的媒体负载测试.md",
     "_posts/什么是-NAT-？.md",
     "_posts/TestLaTeX.md",
     "_posts/TestExcerpt.md",
     "_posts/ReviewIssues.md",
     "_posts/金村快线 III 期规划公布.md",
-    "_posts/马上要复试.md",
     "_posts/记录 C 语言填坑过程.md",
     "未命名.md",
     "_posts/关于 Xcode 15 通过非开发者账号在 iOS 设备上真机调试的坑.md",
     "images/logo.png",
     "images/金村快线线路图.png",
-    "mntips/index.md",
     "images/GFL3.png",
     "_posts/金村快线 2 号线.md",
     "_posts/Internet Protocol.md",
@@ -203,12 +222,8 @@
     "_posts/Test.md",
     "_posts/使用 Git 配合 Hexo 实现本地编辑云端博客.md",
     "_posts/Git 使用提醒.md",
-    "_posts/欢迎来到-Zho-s-Blog.md",
-    "_posts/考研院校.md",
     "images/1cb80d6afff42414496fb2e819f5fe54_2545001388376647547.mp4",
     "未命名.canvas",
-    "_obsidian/Post Template.md",
-    "_posts/使用 Hexo + Git 自建博客服务器.md",
     "_obsidian"
   ]
 }
