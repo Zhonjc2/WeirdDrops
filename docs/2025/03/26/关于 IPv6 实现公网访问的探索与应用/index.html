@@ -31,7 +31,7 @@
 <meta property="og:description" content="既然有了公网地址，那岂不是……">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-26T05:19:42.000Z">
-<meta property="article:modified_time" content="2025-03-26T05:32:25.607Z">
+<meta property="article:modified_time" content="2025-03-26T05:38:26.465Z">
 <meta property="article:author" content="Zhonjc">
 <meta name="twitter:card" content="summary">
   
@@ -86,7 +86,7 @@
 <widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
 
 
-<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">关于 IPv6 实现公网访问的探索与应用</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%96%91%E9%97%AE%E4%B8%8E%E8%A7%A3%E7%AD%94"><span class="toc-text">疑问与解答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-HTTP-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">实现 HTTP 服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%AE%B6%E7%94%A8%E7%94%B5%E8%84%91%E4%B8%8A%E5%AE%9E%E7%8E%B0-WebDAV-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">在家用电脑上实现 WebDAV 服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">实现文件服务器</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">关于 IPv6 实现公网访问的探索与应用</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-http-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">实现 HTTP 服务器</span></a></li></ol></div></div></widget>
 
 
 
@@ -106,91 +106,116 @@
 
 <article class='md-text content post'>
 <h1 class="article-title"><span>关于 IPv6 实现公网访问的探索与应用</span></h1>
-<p><span style="color: red; font-size: 1.5rem; font-weight: 900; ">来自作者：文件可能有错误，请注意甄别</span></p>
-<p>猛然发现现在 IPv6 已经成为了可靠的公网访问内网的方案。运营商为每一个家庭网络分配了高达 64 位的地址号，可以有 $2^{64}$ 个主机同时以公网地址的身份连接到互联网。</p>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<p><span
+style="color: red; font-size: 1.5rem; font-weight: 900; ">来自作者：文件可能有错误，请注意甄别</span></p>
+<p>猛然发现现在 IPv6
+已经成为了可靠的公网访问内网的方案。运营商为每一个家庭网络分配了高达 64
+位的地址号，可以有 <span class="math inline">\(2^{64}\)</span>
+个主机同时以公网地址的身份连接到互联网。</p>
+<h2 id="工具">工具</h2>
+<ul>
 <li>使用 tail -f 来事实跟踪更新的文件内容</li>
 <li>使用 mkdir -p 来直接创建整条路径文件夹</li>
 <li>使用 apachectl -t 来检查配置文件语法</li>
 <li>使用 cd - 回到上一个工作目录</li>
-<li>原来  Obsidian 可以按块缩进，然后代码块就可以完美的放在列表内了</li>
-<li>如果服务通过 restart 来重启，发现一些更改没有生效，那就尝试先 stop 再 start。在 apachectl 中 restart 后，DAV 配置不知为何不会生效，需要 stop 再 start。</li>
-<li>要注意，macOS 默认不允许三方软件访问外部磁盘，因此如果要通过 Apache WebDAV 等实现对外部磁盘的访问，需要在 macOS 的设置-隐私中，在完全磁盘访问权限中，增加 &#x2F;usr&#x2F;sbin&#x2F;httpd 来实现外部磁盘访问。</li>
-<li>对于其他用户（例如用于运行 Apache 服务器的 _www 用户），lsof 可能检测不出其端口。此时只需要 sudo 即可。</li>
-<li>vim <ul>
-<li>删除当前字符 x </li>
-<li>回到行首 0</li>
+<li>原来 Obsidian 可以按块缩进，然后代码块就可以完美的放在列表内了</li>
+<li>如果服务通过 restart 来重启，发现一些更改没有生效，那就尝试先 stop
+再 start。在 apachectl 中 restart 后，DAV 配置不知为何不会生效，需要
+stop 再 start。</li>
+<li>要注意，macOS 默认不允许三方软件访问外部磁盘，因此如果要通过 Apache
+WebDAV 等实现对外部磁盘的访问，需要在 macOS
+的设置-隐私中，在完全磁盘访问权限中，增加 /usr/sbin/httpd
+来实现外部磁盘访问。</li>
+<li>对于其他用户（例如用于运行 Apache 服务器的 _www 用户），lsof
+可能检测不出其端口。此时只需要 sudo 即可。</li>
+<li>vim
+<ul>
+<li>删除当前字符 x</li>
+<li>回到行首 0 ## 疑问与解答</li>
+</ul></li>
+<li>一般家庭网络的 IPv6 地址的网络号为前 64
+位。同时，运营商并<strong>不会</strong>为家庭网络分配真正静态的 IPv6
+地址，也就是说，其地址中的网络前缀是动态的。何时动的？事实上，我曾经固定了我笔记本的
+IPv6 地址，并绑定到了域名，因为不会也懒得弄
+DDNS，所以就暂时不折腾了。之后，由于有些事情笔记本带了出去，持续了几天，回来之后发现，域名解析还是正常的，但是之前固定的
+IPv6
+地址已经不可达了。后来才发现并意识到，在这几天期间，<strong>光猫与路由器</strong>被重启过。在这个时候，ISP
+会为我的家庭网络重新分配 IPv6 地址，此时网络号已经发生了变化，原先固定的
+IPv6 地址已经不可用了，或者成了别人家的了。</li>
+<li>你当然可以将自己的设备的 IPv6 地址设置为固定的，然后配合 DNS
+实现公网便捷访问。但是重启网络设备会重新分配网络号，会导致之前固定的不可用。因此配合
+DDNS 是最优解。</li>
 </ul>
-</li>
+<h2 id="实现-http-服务器">实现 HTTP 服务器</h2>
+<ul>
+<li>实际上，这似乎是做不到的，因为 ISP 不让家用宽带监听 80/443 端口。 ##
+在家用电脑上实现 WebDAV 服务器</li>
 </ul>
-<h2 id="疑问与解答"><a href="#疑问与解答" class="headerlink" title="疑问与解答"></a>疑问与解答</h2><ul>
-<li>一般家庭网络的 IPv6 地址的网络号为前 64 位。同时，运营商并<strong>不会</strong>为家庭网络分配真正静态的 IPv6 地址，也就是说，其地址中的网络前缀是动态的。何时动的？事实上，我曾经固定了我笔记本的 IPv6 地址，并绑定到了域名，因为不会也懒得弄 DDNS，所以就暂时不折腾了。之后，由于有些事情笔记本带了出去，持续了几天，回来之后发现，域名解析还是正常的，但是之前固定的 IPv6 地址已经不可达了。后来才发现并意识到，在这几天期间，<strong>光猫与路由器</strong>被重启过。在这个时候，ISP 会为我的家庭网络重新分配 IPv6 地址，此时网络号已经发生了变化，原先固定的 IPv6 地址已经不可用了，或者成了别人家的了。</li>
-<li>你当然可以将自己的设备的 IPv6 地址设置为固定的，然后配合 DNS 实现公网便捷访问。但是重启网络设备会重新分配网络号，会导致之前固定的不可用。因此配合 DDNS 是最优解。</li>
-</ul>
-<h2 id="实现-HTTP-服务器"><a href="#实现-HTTP-服务器" class="headerlink" title="实现 HTTP 服务器"></a>实现 HTTP 服务器</h2><ul>
-<li>实际上，这似乎是做不到的，因为 ISP 不让家用宽带监听 80&#x2F;443 端口。</li>
-</ul>
-<h2 id="在家用电脑上实现-WebDAV-服务器"><a href="#在家用电脑上实现-WebDAV-服务器" class="headerlink" title="在家用电脑上实现 WebDAV 服务器"></a>在家用电脑上实现 WebDAV 服务器</h2><blockquote>
-<p>参考自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34258078/article/details/93450486">https://blog.csdn.net/weixin_34258078/article/details/93450486</a> 与  ChatGPT</p>
+<blockquote>
+<p>参考自 https://blog.csdn.net/weixin_34258078/article/details/93450486
+与 ChatGPT</p>
 </blockquote>
 <ul>
-<li>才发现，经常在镜像源看到的简陋文件页面竟然就是 Apache 提供的 WebDAV 服务器。</li>
-<li>买了个 Apple TV，但是没有资源，也没有订阅钱，更没有 NAS 钱，所以吃灰了。打算卖掉，但是在卖之前，突然想到既然 Apple TV 插不了存储盘，为什么不用本地服务器呢？</li>
-<li>在 Mac 上实现 Apache WebDAV 服务器<ul>
-<li>macOS 已经预装了 Apache 服务器，只需要开启和配置 WebDAV 模块即可</li>
+<li>才发现，经常在镜像源看到的简陋文件页面竟然就是 Apache 提供的 WebDAV
+服务器。</li>
+<li>买了个 Apple TV，但是没有资源，也没有订阅钱，更没有 NAS
+钱，所以吃灰了。打算卖掉，但是在卖之前，突然想到既然 Apple TV
+插不了存储盘，为什么不用本地服务器呢？</li>
+<li>在 Mac 上实现 Apache WebDAV 服务器
+<ul>
+<li>macOS 已经预装了 Apache 服务器，只需要开启和配置 WebDAV
+模块即可</li>
 </ul>
-<ol>
-<li><p>进入 &#x2F;etc&#x2F;apache2</p>
-</li>
-<li><p>编辑 httpd.conf 配置文件，将 WebDAV 启用 </p>
-<ol>
+<ol type="1">
+<li>进入 /etc/apache2</li>
+<li>编辑 httpd.conf 配置文件，将 WebDAV 启用
+<ol type="1">
 <li><code>sudo vim httpd.conf</code></li>
 <li>查找 httpd-dav.conf ，命令模式下输入<code>/httpd-dav</code></li>
-<li>将 <code>#Include /private/etc/apache2/extra/httpd-dav.conf</code> 注释移除</li>
-<li>分别查找 <code>dav_module</code>、<code>dav_fs_module</code>、<code>auth_digest_module</code>，然后将其 LoadModule 前的注释移除<ul>
+<li>将 <code>#Include /private/etc/apache2/extra/httpd-dav.conf</code>
+注释移除</li>
+<li>分别查找
+<code>dav_module</code>、<code>dav_fs_module</code>、<code>auth_digest_module</code>，然后将其
+LoadModule 前的注释移除
+<ul>
 <li><code>LoadModule dav_module libexec/apache2/mod_dav.so</code></li>
 <li><code>LoadModule dav_fs_module libexec/apache2/mod_dav_fs.so</code></li>
 <li><code>LoadModule auth_digest_module libexec/apache2/mod_auth_digest.so</code></li>
-</ul>
-</li>
+</ul></li>
 <li>保存并退出（:wq）</li>
-</ol>
-</li>
-<li><p>创建自己的 WebDAV 资源目录</p>
-<ol>
+</ol></li>
+<li>创建自己的 WebDAV 资源目录
+<ol type="1">
 <li><code>sudo mkdir -p 你想创建的 WebDAV 目录</code></li>
 <li><code>sudo chown -R 你的用户名:_www 你想创建的 WebDAV 目录</code></li>
 <li><code>sudo chmod -R 755 你想创建的 WebDAV 目录</code></li>
-</ol>
-</li>
-<li><p>创建专用于 WebDAV 的用户与密码</p>
+</ol></li>
+<li>创建专用于 WebDAV 的用户与密码
 <ul>
 <li><code>sudo htpasswd -c /etc/apache2/webdav.passwd zhonjc</code></li>
-</ul>
-</li>
-<li><p>进入 &#x2F;etc&#x2F;apache2&#x2F;extra</p>
-</li>
-<li><p>编辑 httpd-dav.conf，配置 WebDAV</p>
-<ol>
+</ul></li>
+<li>进入 /etc/apache2/extra</li>
+<li>编辑 httpd-dav.conf，配置 WebDAV
+<ol type="1">
 <li>sudo vim httpd-dav.conf</li>
-<li>在配置文件中给出的默认的 uploads 目录后，新增自己的目录 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Alias /webdav &quot;/Users/zhonjc/WebDAV&quot;</span><br><span class="line"># /webdav 就是之后访问 WebDAV 的路径</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Directory</span> &quot;/<span class="attr">Users</span>/<span class="attr">zhonjc</span>/<span class="attr">WebDAV</span>&quot;&gt;</span></span><br><span class="line">        Dav On</span><br><span class="line">        AuthType Basic</span><br><span class="line">        AuthName WebDAV-Security</span><br><span class="line">        AuthUserFile &quot;/etc/apache2/webdav.passwd&quot;</span><br><span class="line">        # 输入刚刚创建的用户密码文件</span><br><span class="line">        AuthDigestProvider file</span><br><span class="line">        AllowOverride None</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        Require valid-user</span><br><span class="line"><span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><p>重启 Apache</p>
+<li>在配置文件中给出的默认的 uploads 目录后，新增自己的目录
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Alias /webdav &quot;/Users/zhonjc/WebDAV&quot;</span><br><span class="line"># /webdav 就是之后访问 WebDAV 的路径</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Directory</span> &quot;/<span class="attr">Users</span>/<span class="attr">zhonjc</span>/<span class="attr">WebDAV</span>&quot;&gt;</span></span><br><span class="line">        Dav On</span><br><span class="line">        AuthType Basic</span><br><span class="line">        AuthName WebDAV-Security</span><br><span class="line">        AuthUserFile &quot;/etc/apache2/webdav.passwd&quot;</span><br><span class="line">        # 输入刚刚创建的用户密码文件</span><br><span class="line">        AuthDigestProvider file</span><br><span class="line">        AllowOverride None</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        Require valid-user</span><br><span class="line"><span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol></li>
+<li>重启 Apache
 <ul>
 <li><code>sudo apachectl stop</code></li>
 <li><code>sudo apachectl start</code></li>
+</ul></li>
+<li>然后就可以访问 localhost/webdav 了</li>
+</ol></li>
 </ul>
-</li>
-<li><p>然后就可以访问 localhost&#x2F;webdav 了</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="实现文件服务器"><a href="#实现文件服务器" class="headerlink" title="实现文件服务器"></a>实现文件服务器</h2>
+<!-- ## 实现文件服务器 -->
 
 
-<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a
+target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享
+4.0 国际</a> 许可协议，转载请注明出处。</p>
 </div></section></div>
 
 </article>
@@ -219,7 +244,11 @@
 
 
       
-<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a
+target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a>
+主题创建。 本博客所有文章除特别声明外，均采用 <a
+target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA
+4.0</a> 许可协议，转载请注明出处。</p>
 <div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>，<span id="busuanzi_container_site_pv">总访问 <span id="busuanzi_value_site_pv"></span> 次</span>，<span id="busuanzi_container_site_uv">访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script>
