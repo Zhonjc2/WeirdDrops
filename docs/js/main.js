@@ -391,7 +391,7 @@ if (stellar.plugins.copycode) {
 }
 
 var backImg = document.createElement('img');
-backImg.src = 'https://t.mwm.moe/ysz';
+backImg.src = 'https://api.kafuuchino.com.cn/?appid=67e3979f19047fa59c2a6c68&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UzOTY3YTE5MDQ3ZmE1OWMyYTZhMTUiLCJpYXQiOjE3NDI5Njg3MzV9.YnRZ0Br-JV5M1by3uDTK0K5HUOig3_oCyNEspcNrbrU';
 backImg.style.opacity = 0;
 backImg.classList.add('back-img');
 document.body.appendChild(backImg);
