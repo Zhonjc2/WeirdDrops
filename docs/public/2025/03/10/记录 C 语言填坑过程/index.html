@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 7.2.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>记录 C 语言填坑过程 - 怪奇语录 WeirdDrops</title>
+
+  
+    <meta name="description" content="拾起 C 语言，发现其还是有非常多的坑点的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录 C 语言填坑过程">
+<meta property="og:url" content="https://blog.zhonjc.cn/2025/03/10/%E8%AE%B0%E5%BD%95%20C%20%E8%AF%AD%E8%A8%80%E5%A1%AB%E5%9D%91%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:site_name" content="怪奇语录 WeirdDrops">
+<meta property="og:description" content="拾起 C 语言，发现其还是有非常多的坑点的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-10T14:11:49.000Z">
+<meta property="article:modified_time" content="2025-03-16T06:58:18.317Z">
+<meta property="article:author" content="Zhonjc">
+<meta property="article:tag" content="计算机复试">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="计算机复试">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/images/a">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    <script defer src="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+    <script defer src="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"onload="renderMathInElement(document.body);"></script>
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="title" href="/"><div class="main" ff="title"><span class="logo">WeirdDrops.</h1></div><div class="sub cap">抛弃无用的情绪，做好该做的便可</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/todos/">TO-DO</a><a class="nav-item" href="/mntips/">Mini Tips</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">记录 C 语言填坑过程</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-text">文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E6%9E%81%E5%85%B6%E6%98%93%E9%94%99"><span class="toc-text">指针（极其易错 😭）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97"><span class="toc-text">运算</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></div><div id="post-meta">发布于&nbsp;<time datetime="2025-03-10T14:11:49.000Z">2025-03-10</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>记录 C 语言填坑过程</span></h1>
+<h2 id="结构体">结构体</h2>
+<ol type="1">
+<li>在定义一个结构体变量之时，其已经被分配了应有的空间。（实际上，C
+语言任何变量在定义时都会自动分配空间）</li>
+<li>结构体在定义时可以进行初始化，使用{}，但除了在初始化时可以使用{}赋值外，其余任何时候都不用{}赋值。（实际上，数组也是这样）</li>
+<li>结构体数组同样，当进行初始化时，会自动分配整个数组的空间，也可以通过{}嵌套赋值。（也就是说，C
+语言数组定义时要么要通过数字显式给出数组长度，要么通过{}进行初始化隐式给出长度，否则会语法错误）</li>
+<li>结构体当中如果有数组，那么在定义结构体类型时，是否需要给出数组成员的长度？需要</li>
+<li>结构体能否直接通过 A = B 来将B结构体的值赋给A？可以</li>
+</ol>
+<h2 id="文件">文件</h2>
+<ol type="1">
+<li>文件定义方式 FILE * fp; fopen(path, mode)/fclose(FILE *) mode 包含
+r/w/a/b</li>
+<li>文件读取方法
+<ol type="1">
+<li>按字符 fgetc(fp) 返回字符，结尾 EOF</li>
+<li>按行 fgets(buffer, buffer_l, fp)，读入 buffer，通过
+feof(fp)来检测文件尾，每行 buffer 从头写。fgets 当文件尾和出错时都会返回
+NULL。固定写法：
+<code>while(!feof(fp))&#123;if(fgets(…) != NULL)&#123;&#125;&#125;</code></li>
+<li>按格式 fscanf(fp, “format”, aim)返回读取项数</li>
+</ol></li>
+<li>文件写入方法
+<ol type="1">
+<li>按字符 fputc(char, fp) </li>
+<li>按行 fputs(string, fp)</li>
+<li>按格式 fprintf(fp, format, src)</li>
+</ol></li>
+</ol>
+<h2 id="数组">数组</h2>
+<ol type="1">
+<li>任何类型的数组，只有在定义时才能通过{}进行赋值（初始化）。</li>
+<li>任何类型的数组，在定义时必须显式或隐式的给出数组长度，不可以不给出。</li>
+<li>任何类型的数组在定义时便会分配好空间，后续无需再次分配。</li>
+<li>数组名，本质上是一种指针常量，其不是普通的指针，不可以被赋值。切记不要把值赋给一个数组名，尤其是字符数组构成的字符串特别容易写错。</li>
+<li>对于数组名 A，A[i]是值，A 是地址，可以有 A+1 来指向下一个值，但 A
+本身的值无法更改，不可以 A++。</li>
+</ol>
+<h2 id="字符串">字符串</h2>
+<ol type="1">
+<li>C 语言中的字符串本质上就是一个字符数组。</li>
+<li>字符串的输入输出
+<ol type="1">
+<li>虽然本质上是一个数组，但是可以通过数组名与 printf 和 scanf
+直接进行输入输出
+<ol type="1">
+<li>无论在 printf 还是 scanf 其中 %s 接收的类型都是 char *，在 printf
+中无需取值。</li>
+</ol></li>
+<li>此外，fgets 也可进行输入，不过输入流是 stdin</li>
+</ol></li>
+<li>赋值方式：
+<ol type="1">
+<li>定义时（初始化时），可以直接赋值。char A[] = "This is a String";
+char B[] = {'H', 'I', '\0'}; </li>
+<li>除了定义时，其余任何时候，都不能通过数组名来直接赋值。</li>
+<li>那么如何赋值？通常使用 strcpy(dest, str);</li>
+</ol></li>
+<li>C 语言字符串的最后必须包含一个隐藏的 '\0'
+作为字符串的末尾标识。在通过{}定义字符数组时如果没加，则在使用字符串相关函数时会可能溢出数组。</li>
+<li>为什么字符串本质上作为一种字符数组可以在printf中直接通过传入数组名来输出呢？其他类型数组不行。因为
+%s 要接收的类型就是 char
+*，而字符数组名在传入函数时会退化为指针，因此可以传入。</li>
+<li>千万别忘 C 语言任何字符串的最后都有一个
+'\0'，在定义字符数组长度时千万要注意！例如名字最多有 4
+个字，但是字符数组必须长度为 5，例如学号固定长度 10
+位，字符数组必须长度为 11。strlen()函数不会算入 '\0'。
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> s[<span class="number">3</span>] = <span class="string">&quot;abc&quot;</span> <span class="comment">// 该语句无法执行。直接通过字符串来初始化时，会自动在其末尾添加 &#x27;\0&#x27; </span></span><br></pre></td></tr></table></figure></li>
+<li>注意，C 语言中，char 类型只占 1 字节，这根本不够存储中文字符，在
+UTF-8 下每个字符长达 3 字节。因此，在 C 语言中，中文字符不能用单个 char
+来存储。同理，在字符数组构成的字符串中，如果该字符串要存储中文，切记不要把长度设定为要存储的中文长度，否则会超界。应该设为长度*3+1。</li>
+<li>使用字符串相关函数如：strlen/strcat/strcpy/strcmp 时，记得加头文件
+&lt;string.h&gt;</li>
+</ol>
+<h2 id="指针极其易错">指针（极其易错 😭）</h2>
+<ol type="1">
+<li>虽然数组名是一种特殊的指针常量，其包含一些数组信息，可以通过
+sizeof(A)来获得整个数组的空间大小。但是，如果数组名传入函数当中，其会退化为普通指针，其不再包含数组信息，sizeof
+只会获得指针本身的空间大小。（sizeof函数不会触发退化）</li>
+<li>在 <strong>C
+语言</strong> 中，普通变量（如 <code>int a;</code>）的内存地址是固定的，一旦分配，无法更改它的地址指向。
+<ol type="1">
+<li>你可以改变 <strong>指针</strong> 的值，让它指向不同的变量，但你
+<strong>不能改变变量本身的地址</strong> 。</li>
+<li><code>swap(&amp;a, &amp;b)</code> 交换的是 <code>a</code> 和 <code>b</code> <strong>存储的值</strong>，但 <code>a</code> 和 <code>b</code> 本身在内存中的位置不会改变。要想实现传地址到函数，来修改普通变量的值，必须通过指针指向来修改值，不能改变指针本身，如果改变指针本身，修改的也只是传入的局部的指针（地址）变量，不会影响原有位置的值。</li>
+<li>不能通过取地址符号 &amp;
+获取普通变量地址之后修改普通变量的地址。普通变量的地址永远不变。&amp;a =
+&amp;b 是非法的。&amp;a 是不可变的。而 *a 是可变的。</li>
+</ol></li>
+<li>注意对指针进行运算时，一定要先保证已经分配好指针指向的空间。int * a
+只会分配指针的空间，不会分配指针指向的值的空间（int）。当通过 * a
+来赋值给 a 指向的空间时，如果该空间没有被分配，则会报错。但是可以给 a
+赋值一个已经分配好空间的 int 变量地址，如
+<code>int i; int * a; a = &amp;i;</code> 但不可以 <code>* a = i;</code>
+int a 会分配 a 的空间，int * a 可不会分配，只会分配地址占用的空间。</li>
+<li>再次强调：修改地址，是不会修改地址原先指向的值的，只会修改地址本身的指向，而普通变量的地址指向是没办法修改的，因此不可以通过修改普通变量的地址来实现修改普通变量的值。</li>
+</ol>
+<h2 id="运算">运算</h2>
+<ol type="1">
+<li>int/int会截断小数部分。</li>
+<li>如果想得到精确运算，将其中一个操作数进行类型转换。(float)int.</li>
+<li>浮点数进行比较时，不可直接用 == 运算符，应该用 a - b &lt; 1e-6
+进行。</li>
+<li>scanf()读取整行会中断在空格处，而 fgets 可以读取整行，但 fgets
+会读取末尾的换行符。gets
+也可以读取整行，且不会读取换行符，但是过时了。</li>
+<li>ASCII 编码中，a-z、A-Z、0-9
+都是按顺序编码的。因此单个字符可以通过比较来判断大小写和数字。将数字字符转为真数字，则可以通过
+将字符减去 48 来实现。</li>
+<li>在 printf 输出时，若要四舍五入输出浮点数保留到二位小数点，则 %.2f
+会自动的四舍五入。</li>
+<li><code>scanf</code> 处理空白字符（空格、回车、Tab）时会自动跳过，不影响读取下一个数字。因此连续读取多个值可以通过
+%d %d %d 来实现。</li>
+<li>switch 的写法 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(c)&#123; <span class="comment">// Switch 括号内可以写表达式，但 switch 只能处理整形结果（包括 char）</span></span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;a&#x27;</span>:</span><br><span class="line">		<span class="comment">// 可正常写多个语句和语句块</span></span><br><span class="line">		<span class="keyword">break</span>; <span class="comment">// 勿忘！</span></span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;b&#x27;</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;c&#x27;</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;d&#x27;</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;e&#x27;</span>: <span class="comment">// 多个 case 相同语句时的写法！！别写到一行里。</span></span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		...</span><br><span class="line">&#125; <span class="comment">//  switch 可以不包含 default，但尽量加上。</span></span><br></pre></td></tr></table></figure></li>
+<li>C语言支持 -a 得到相反数。</li>
+<li>在 OJ 评测中，C 语言若提前计算完毕要中途退出，最好用 return 0;
+而不要用 exit()。</li>
+<li>二维数组 A[i][j]中，A[0]
+代表的是二维数组中第一个数组的==地址==。</li>
+<li>C 语言中的常量（如
+1、2、3、'a'、"abc"）是存储在只读区域，对其进行修改会导致错误。</li>
+</ol>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a
+target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享
+4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/03/17/%E9%A9%AC%E4%B8%8A%E8%A6%81%E5%A4%8D%E8%AF%95/">马上要研究生复试</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/02/12/%E9%87%91%E6%9D%91%E5%BF%AB%E7%BA%BF%20III%20%E6%9C%9F%E8%A7%84%E5%88%92%E5%85%AC%E5%B8%83/">金村快线 III 期规划公布</a></div></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      快来参与讨论吧
+    </section>
+    <section class='body cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="Zhonjc2/zblogReview" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </section>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a
+target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a>
+主题创建。 本博客所有文章除特别声明外，均采用 <a
+target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA
+4.0</a> 许可协议，转载请注明出处。</p>
+<div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>，<span id="busuanzi_container_site_pv">总访问 <span id="busuanzi_value_site_pv"></span> 次</span>，<span id="busuanzi_container_site_uv">访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  function createtime() {
+    var now = new Date();
+    var grt= new Date("07/20/2023 00:00:00");
+    now.setTime(now.getTime()+250);
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+    document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 ";
+    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+  };
+  setInterval("createtime()",250);
+</script>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"1px","duration":800,"interval":100,"scale":0.5});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
