@@ -31,7 +31,7 @@
 <meta property="og:description" content="既然有了公网地址，那岂不是……">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-26T05:19:42.000Z">
-<meta property="article:modified_time" content="2025-03-26T06:06:11.181Z">
+<meta property="article:modified_time" content="2025-03-27T05:55:27.404Z">
 <meta property="article:author" content="Zhonjc">
 <meta name="twitter:card" content="summary">
   
@@ -86,7 +86,7 @@
 <widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
 
 
-<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">关于 IPv6 实现公网访问的探索与应用</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-http-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">实现 HTTP 服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%AE%B6%E7%94%A8%E7%94%B5%E8%84%91%E4%B8%8A%E5%AE%9E%E7%8E%B0-webdav-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">在家用电脑上实现 WebDAV
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">关于 IPv6 实现公网访问的探索与应用</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%96%91%E9%97%AE%E4%B8%8E%E8%A7%A3%E7%AD%94"><span class="toc-text">疑问与解答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-http-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">实现 HTTP 服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%AE%B6%E7%94%A8%E7%94%B5%E8%84%91%E4%B8%8A%E5%AE%9E%E7%8E%B0-webdav-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">在家用电脑上实现 WebDAV
 服务器</span></a></li></ol></div></div></widget>
 
 
@@ -119,6 +119,8 @@ style="color: red; font-size: 1.5rem; font-weight: 900; ">来自作者：文件�
 <li>使用 mkdir -p 来直接创建整条路径文件夹</li>
 <li>使用 apachectl -t 来检查配置文件语法</li>
 <li>使用 cd - 回到上一个工作目录</li>
+<li>注意在 zsh 用 Tab 补全路径时，会自动补好目录后的 '/'
+，但它补的只是虚的（加粗的），当你按下空格，这个左斜杠会自动消失。</li>
 <li>原来 Obsidian 可以按块缩进，然后代码块就可以完美的放在列表内了</li>
 <li>如果服务通过 restart 来重启，发现一些更改没有生效，那就尝试先 stop
 再 start。在 apachectl 中 restart 后，DAV 配置不知为何不会生效，需要
@@ -132,8 +134,11 @@ WebDAV 等实现对外部磁盘的访问，需要在 macOS
 <li>vim
 <ul>
 <li>删除当前字符 x</li>
-<li>回到行首 0 ## 疑问与解答</li>
+<li>回到行首 0</li>
 </ul></li>
+</ul>
+<h2 id="疑问与解答">疑问与解答</h2>
+<ul>
 <li>一般家庭网络的 IPv6 地址的网络号为前 64
 位。同时，运营商并<strong>不会</strong>为家庭网络分配真正静态的 IPv6
 地址，也就是说，其地址中的网络前缀是动态的。何时动的？事实上，我曾经固定了我笔记本的
@@ -216,7 +221,9 @@ LoadModule 前的注释移除
 
 
 
-<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a
+target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享
+4.0 国际</a> 许可协议，转载请注明出处。</p>
 </div></section></div>
 
 </article>
@@ -245,7 +252,11 @@ LoadModule 前的注释移除
 
 
       
-<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a
+target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a>
+主题创建。 本博客所有文章除特别声明外，均采用 <a
+target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA
+4.0</a> 许可协议，转载请注明出处。</p>
 <div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>，<span id="busuanzi_container_site_pv">总访问 <span id="busuanzi_value_site_pv"></span> 次</span>，<span id="busuanzi_container_site_uv">访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script>
