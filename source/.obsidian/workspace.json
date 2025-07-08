@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Test 2.md",
+                "file": "_posts/Swift 学习笔记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Test 2"
+              "title": "Swift 学习笔记"
             }
           },
           {
@@ -27,16 +27,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/金村快线 III 期规划公布.md",
+                "file": "_posts/关于 IPv6 实现公网访问的探索与应用.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "金村快线 III 期规划公布"
+              "title": "关于 IPv6 实现公网访问的探索与应用"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -184,9 +183,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "0603523be08b659c",
+  "active": "ad7665825773bf61",
   "lastOpenFiles": [
     "_posts/关于 IPv6 实现公网访问的探索与应用.md",
+    "_posts/Swift 学习笔记.md",
+    "Test 2.md",
+    "_posts/金村快线 III 期规划公布.md",
     "todos/index.md",
     "tags/index.md",
     "mntips/index.md",
@@ -197,7 +199,6 @@
     "_posts/TestLaTeX.md",
     "_posts/TestExcerpt.md",
     "_posts/ReviewIssues.md",
-    "_posts/金村快线 III 期规划公布.md",
     "_posts/记录 C 语言填坑过程.md",
     "未命名.md",
     "_posts/关于 Xcode 15 通过非开发者账号在 iOS 设备上真机调试的坑.md",
@@ -218,10 +219,8 @@
     "_posts/PicTest.md",
     "images/截屏2024-04-12 18.42.30.png",
     "_posts/哪些出路？.md",
-    "Test 2.md",
     "_posts/Test.md",
     "_posts/使用 Git 配合 Hexo 实现本地编辑云端博客.md",
-    "_posts/Git 使用提醒.md",
     "images/1cb80d6afff42414496fb2e819f5fe54_2545001388376647547.mp4",
     "未命名.canvas",
     "_obsidian"
