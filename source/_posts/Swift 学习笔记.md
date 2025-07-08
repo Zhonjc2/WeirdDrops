@@ -5,7 +5,7 @@ author: Zhonjc
 tags: 
 categories:
   - 学习
-description: 学什么学，Cursor/Claude Code/... 秒了
+description: 学什么学，Cursor/Claude Code/Copilot/... 秒了
 ---
 - 学习资源：https://doc.swiftgg.team/documentation/the-swift-programming-language
 - 使用 MarkDown 编写列表时，不要把列表中途断开，比如在列表中插入代码块，一定要插到列表里，否则会中断列表

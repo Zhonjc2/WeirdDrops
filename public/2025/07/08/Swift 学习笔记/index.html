@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7886659727845903"
+     crossorigin="anonymous"></script>
+
+<head>
+  <meta name="generator" content="Hexo 7.2.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Swift 学习笔记 - 怪奇语录 WeirdDrops</title>
+
+  
+    <meta name="description" content="学什么学，Cursor&#x2F;Claude Code&#x2F;Copilot&#x2F;... 秒了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift 学习笔记">
+<meta property="og:url" content="https://blog.zhonjc.cn/2025/07/08/Swift%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="怪奇语录 WeirdDrops">
+<meta property="og:description" content="学什么学，Cursor&#x2F;Claude Code&#x2F;Copilot&#x2F;... 秒了">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-08T07:41:08.000Z">
+<meta property="article:modified_time" content="2025-07-08T09:54:19.230Z">
+<meta property="article:author" content="Zhonjc">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/images/a">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    <script defer src="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+    <script defer src="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"onload="renderMathInElement(document.body);"></script>
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="title" href="/"><div class="main" ff="title"><span class="logo">WeirdDrops.</h1></div><div class="sub cap">抛弃无用的情绪，做好该做的便可</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/todos/">TO-DO</a><a class="nav-item" href="/mntips/">Mini Tips</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Swift 学习笔记</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Optional-%E5%8F%AF%E9%80%89%E7%B1%BB%E5%9E%8B"><span class="toc-text">Optional 可选类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%8C%85%E6%96%B9%E6%B3%95"><span class="toc-text">解包方法</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></div><div id="post-meta">发布于&nbsp;<time datetime="2025-07-08T07:41:08.000Z">2025-07-08</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>Swift 学习笔记</span></h1>
+<ul>
+<li><p>学习资源：<a target="_blank" rel="noopener" href="https://doc.swiftgg.team/documentation/the-swift-programming-language">https://doc.swiftgg.team/documentation/the-swift-programming-language</a></p>
+</li>
+<li><p>使用 MarkDown 编写列表时，不要把列表中途断开，比如在列表中插入代码块，一定要插到列表里，否则会中断列表</p>
+<p>  或许现在学这些东西没啥用了</p>
+</li>
+</ul>
+<hr>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
+<li>let 声明常量，var 声明变量，let a: Int</li>
+<li>Swift 是明确类型的语言，每一个变量都<strong>必须有明确的类型</strong>，但 Swift 具有类型推断的机制，在变量声明时可以根据赋值来确定变量类型，因此在赋值类型明确时，可以不用显式说明类型，但若出现无法推断出类型的情况，例如不赋初值时，则必须指定类型</li>
+<li>逗号分隔连续的变量声明后添加类型注解，这一行变量都是这个类型  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a, b, c: <span class="type">Double</span> <span class="comment">// abc 都是 Double 类型</span></span><br></pre></td></tr></table></figure></li>
+<li>Swift 允许关键字用作变量、函数名，只需要用``包裹变量名即可</li>
+<li>Swift 引用变&#x2F;常量前，必须初始化，但可以不在定义时初始化  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> `let` <span class="operator">=</span> <span class="number">2</span></span><br></pre></td></tr></table></figure></li>
+<li>字符串插值使用”\()”  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stringInsert <span class="operator">=</span> <span class="string">&quot;This is a value: <span class="subst">\(value)</span>&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>在 Swift 中，数值通过加 0、_来提升可读性  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a <span class="operator">=</span> <span class="number">000012_0000</span> <span class="comment">// 实际值为 120000</span></span><br><span class="line"><span class="keyword">let</span> b <span class="operator">=</span> <span class="number">000120_0001</span> <span class="comment">// 实际值为 1200001</span></span><br></pre></td></tr></table></figure></li>
+<li>在 Swift 中，可以使用 _ 来作为匿名元素的占位符，该元素只允许声明，不允许被引用，_变量可重复被定义  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">_</span> <span class="operator">=</span> thisIsAFunction() </span><br></pre></td></tr></table></figure></li>
+<li>注意：同类型整数相加，即使溢出也不会自动升级类型，永远保持加数的类型  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> veryBig <span class="operator">=</span> <span class="type">UInt8</span>.max <span class="operator">+</span> <span class="type">UInt8</span>.max <span class="comment">// 猜猜这句对不对</span></span><br><span class="line"><span class="comment">// 实际上是不对的，因为溢出了，即使溢出也不会自动升级类型</span></span><br><span class="line"><span class="comment">// 注意：只有同类型的变量才可进行运算。</span></span><br></pre></td></tr></table></figure></li>
+<li>注意：<strong>只有同类型的变量才可进行运算</strong>。Int 都不能加 Int8  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a <span class="operator">=</span> <span class="type">Int</span>.min <span class="operator">+</span> <span class="type">Int8</span>.max <span class="comment">// 没错这都不能加</span></span><br><span class="line"><span class="keyword">let</span> b <span class="operator">=</span> <span class="number">9</span> <span class="operator">+</span> <span class="number">1.1</span> <span class="comment">// 这是可以加的，字面量没有类型一说，b 会被推断为 Double</span></span><br></pre></td></tr></table></figure></li>
+<li>类型转换的本质就是某个类型的初始化器（构造方法 init()），对于基本类型：Int、Double 等也是结构体类型，也具有一些属性和初始化器  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> c <span class="operator">=</span> <span class="type">Int</span>(<span class="number">1.1</span>) <span class="comment">// c = 1</span></span><br></pre></td></tr></table></figure></li>
+<li>使用 <code>typealias</code> 关键字来为类型定义别名  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typealias</span> <span class="type">A</span> <span class="operator">=</span> <span class="type">Int</span></span><br></pre></td></tr></table></figure></li>
+<li>元组，一种集合类型，允许包含不同类型的元素<ul>
+<li>定义方法 <code>let tup = (1, &quot;2&quot;, 3.0)</code> </li>
+<li>在定义时可以为每个元素命名 <code>let tup_ = (intElem: 1, stringElem: &quot;2&quot;)</code></li>
+<li>可以通过索引引用（从 0 开始），也可以通过元素名称引用<code>let a = tup.0</code>，<code>let b = tup.intElem</code></li>
+<li>你甚至可以一次性将元组值赋给一组变量 <code>let (q, w, e) = tup</code></li>
+<li>元组可以嵌套 <code>let p = (1, (2,), (3, 4), 5)</code></li>
+</ul>
+</li>
+<li>和 Java 一样，Swift 支持函数重载，支持不同参数列表的相同函数名的函数</li>
+<li>guard 语句，是一种流程控制语句，作用在于守门，用于实现 “在不满足要求时” 提前退出<ul>
+<li>语法 <code>guard a == 0 else &#123;条件不成立时执行的语句&#125;</code> </li>
+<li>guard 没有条件成立时执行的语句，只有条件不成立时执行的语句块，且 Swift 强制要求 guard else {} 语句块中必须包含结束类语句，例如 return 。</li>
+<li>guard 作用在于守门，当条件不成立时，其后续的语句将不再执行，直接返回。</li>
+<li>用 guard 处理异常条件，用 if 处理正常逻辑判断。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Optional-可选类型"><a href="#Optional-可选类型" class="headerlink" title="Optional 可选类型"></a>Optional 可选类型</h3><ul>
+<li><p>这个地方和 Java 完全不同</p>
+</li>
+<li><p>Swift 中也有代表值为空的关键字，即 <code>nil</code></p>
+</li>
+<li><p>但对于非可选类型的变量，其值不允许为 <code>nil</code>，也就是说，Swift 不允许非可选变量为空</p>
+</li>
+<li><p>只有可选类型的变量才可为 <code>nil</code> ，可选类型变量的值要么是具体的一个值，要么为 <code>nil</code></p>
+</li>
+<li><p>非可选类型变量可以赋值给可选类型变量，会自动转化（但是 Float 却没办法自动转化为 Double）</p>
+</li>
+<li><p>定义： <code>let opt: Int? = nil</code> 只需要在基本类型后加个 <code>?</code> 即代表可选类型</p>
+</li>
+<li><p>一个很典型的例子，使用 Int(String) 初始化器将字符串转换为数字时，该初始化器返回的便是 <code>Int?</code> 可选类型，因为字符串并不一定可以转化为数字，当无法转换为数字时便会返回 <code>nil</code>。</p>
+</li>
+<li><p>要注意，即使可选类型的变量，其值不为 <code>nil</code>，即包含具体值，该变量也不可当做非可选变量去直接进行运算。即 可选类型变量不可当做非可选类型变量去直接使用。在使用之前，需要先进行<strong>解包</strong>。例如上一条中，Int(String) 初始化器返回的不是 Int 类型，而是 Int? 类型，或者说是 Optional&lt;Int&gt; 类型，该类型不可参与 Int 间的运算，必须先进行解包，解包成功后会成为非可选的 Int 类型。</p>
+</li>
+<li><p>Optional 类型不可以赋值给 non-Optional 类型，不会自动解包</p>
+</li>
+</ul>
+<h3 id="解包方法"><a href="#解包方法" class="headerlink" title="解包方法"></a>解包方法</h3><ul>
+<li>使用 ‘!’ 强制解包，但不推荐。 <code>let optd = opt!</code>，当 opt 为 <code>nil</code> 时，解包失败，此时会抛出运行时错误，中断程序运行，因此只能在确定 100% 非空时才可用。</li>
+<li>可选绑定是更安全的解包方法。<code>if/guard/while let/var optd = opt</code> <ul>
+<li><p>if</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if let</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">let</span> optd <span class="operator">=</span> opt &#123;</span><br><span class="line">		<span class="comment">// 解包成功执行</span></span><br><span class="line">		<span class="comment">// 注意，optd 变量只在解包成功的 if 语句块内有效，出了 if 就不存在这个变量了</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// 解包失败执行</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//  可选绑定创建的新变量名称可以和原可选变量名称相同</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">let</span> opt <span class="operator">=</span> opt &#123;</span><br><span class="line">		<span class="comment">// 解包成功执行，此时非可选的普通变量名称也是 opt，会覆盖原可选，在 if 语句块内，原可选变量无法再次访问</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 最后你可以简写成这样</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">let</span> opt &#123;</span><br><span class="line">		<span class="comment">// 解包成功执行，opt 为解包后的非可选变量</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 通过可选绑定解包后，解包得到临时的非可选变量。如果要更改该变量，则可以使用 if var。</span></span><br><span class="line">	<span class="comment">// 但修改仅会影响解包后得到的临时变量，不会影响原可选</span></span><br></pre></td></tr></table></figure></li>
+<li><p>在 if 进行可选绑定时，其得到的解包后的非可选类型变量，只在 if 语句块内有效。如果想实现后续代码中都有效，则可以考虑使用 guard</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// guard let</span></span><br><span class="line">	<span class="keyword">guard</span> <span class="keyword">let</span> optd <span class="operator">=</span> opt <span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="comment">// guard else 语句块内必须包含退出语句，该句在解包失败时会直接返回</span></span><br><span class="line">	&#125;</span><br><span class="line">		<span class="comment">// 后续语句中，optd 都有效，为非可选类型</span></span><br><span class="line">	<span class="keyword">guard</span> <span class="keyword">let</span> opt <span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">		<span class="comment">// 后续语句中，opt 将变换为非可选类型，原可选类型被覆盖，不可再访问</span></span><br></pre></td></tr></table></figure></li>
+<li><p>可选绑定解包可以连续解多个包，用 <code>,</code> 隔开即可 <code>if let a, let b, ...</code>，其中只要有一个解包失败，就会进入 else 块</p>
+</li>
+</ul>
+</li>
+<li>通过提供后备值进行解包 <code>let optd = opt ?? 2</code> 该句提供了 2 这个后备值，当 opt 不可解包时，optd 就会被赋值为 2。当 opt 可解包时，optd 就会被赋值为 opt 的实际值。</li>
+<li>隐式解包可选类型<ul>
+<li>隐式解包可选类型 本质上仍是 可选类型，但在引用时可以作为普通变量使用</li>
+<li>在引用隐式可选类型时，Swift 会先将其作为可选类型，若无法作为可选类型（例如赋值给一个普通变量），则会对其进行强制解包，然后将其作为非可选类型。若解包失败，则会抛出运行时错误。</li>
+<li>定义：<code>let hideOpt: Int! = 2</code></li>
+</ul>
+</li>
+</ul>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/03/26/%E5%85%B3%E4%BA%8E%20IPv6%20%E5%AE%9E%E7%8E%B0%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%BA%94%E7%94%A8/">关于 IPv6 实现公网访问的探索与应用</a></div></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      快来参与讨论吧
+    </section>
+    <section class='body cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="Zhonjc2/zblogReview" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </section>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>，<span id="busuanzi_container_site_pv">总访问 <span id="busuanzi_value_site_pv"></span> 次</span>，<span id="busuanzi_container_site_uv">访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  function createtime() {
+    var now = new Date();
+    var grt= new Date("07/20/2023 00:00:00");
+    now.setTime(now.getTime()+250);
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+    document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 ";
+    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+  };
+  setInterval("createtime()",250);
+</script>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"1px","duration":800,"interval":100,"scale":0.5});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
