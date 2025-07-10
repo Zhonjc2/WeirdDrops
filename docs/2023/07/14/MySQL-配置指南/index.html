@@ -83,7 +83,7 @@
 
   
 
-<header class="header"><div class="logo-wrap"><a class="title" href="/"><div class="main" ff="title"><span class="logo">WeirdDrops.</h1></div><div class="sub cap">抛弃无用的情绪，做好该做的便可</div></a></div>
+<header class="header"><div class="logo-wrap"><a class="title" href="/"><div class="main" ff="title"><span class="logo">WeirdDrops.</h1></div><div class="sub cap">应对焦虑的最好方法就是行动起来</div></a></div>
 
 <nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/todos/">TO-DO</a><a class="nav-item" href="/mntips/">Mini Tips</a></nav>
 </header>
@@ -93,7 +93,8 @@
 <widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
 
 
-<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">MySQL 8 配置指南</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87mysqld%E5%91%BD%E4%BB%A4%E5%BC%80%E5%90%AFmysqld%E6%9C%8D%E5%8A%A1%EF%BC%9A"><span class="toc-text">通过mysqld命令开启mysqld服务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87service-mysqld-start%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8mysqld%E6%9C%8D%E5%8A%A1%EF%BC%9A"><span class="toc-text">通过service mysqld start命令启动mysqld服务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%EF%BC%9A"><span class="toc-text">修改密码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%8E%88%E6%9D%83"><span class="toc-text">远程连接授权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3-0"><span class="toc-text">解决端口 0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%8B%E4%BA%88%E8%BF%9E%E6%8E%A5%E6%9D%83%E9%99%90%EF%BC%9A"><span class="toc-text">赋予连接权限：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E6%89%80%E6%9C%89%E6%9D%83%E9%99%90-%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="toc-text">授权所有权限 开启远程连接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-text">总的步骤</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">MySQL 8 配置指南</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87mysqld%E5%91%BD%E4%BB%A4%E5%BC%80%E5%90%AFmysqld%E6%9C%8D%E5%8A%A1"><span class="toc-text">通过mysqld命令开启mysqld服务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87service-mysqld-start%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8mysqld%E6%9C%8D%E5%8A%A1"><span class="toc-text">通过service mysqld
+start命令启动mysqld服务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">修改密码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%8E%88%E6%9D%83"><span class="toc-text">远程连接授权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3-0"><span class="toc-text">解决端口 0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%8B%E4%BA%88%E8%BF%9E%E6%8E%A5%E6%9D%83%E9%99%90"><span class="toc-text">赋予连接权限：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E6%89%80%E6%9C%89%E6%9D%83%E9%99%90-%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="toc-text">授权所有权限 开启远程连接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-text">总的步骤</span></a></li></ol></div></div></widget>
 
 
 
@@ -113,50 +114,82 @@
 
 <article class='md-text content post'>
 <h1 class="article-title"><span>MySQL 8 配置指南</span></h1>
-<h3 id="通过mysqld命令开启mysqld服务："><a href="#通过mysqld命令开启mysqld服务：" class="headerlink" title="通过mysqld命令开启mysqld服务："></a>通过mysqld命令开启mysqld服务：</h3><ol>
+<h3
+id="通过mysqld命令开启mysqld服务">通过mysqld命令开启mysqld服务：</h3>
+<ol type="1">
 <li>ps -ef |grep mysqld 查看进程，先 kill 掉所有的 mysql 相关进程</li>
-<li>先使用 mysqld —user&#x3D;root 命令，此时该命令窗口被 mysqld 占用，无法使用</li>
+<li>先使用 mysqld —user=root 命令，此时该命令窗口被 mysqld
+占用，无法使用</li>
 <li>新建 SSH 连接，用新的窗口使用 mysql 命令。</li>
 </ol>
-<h3 id="通过service-mysqld-start命令启动mysqld服务："><a href="#通过service-mysqld-start命令启动mysqld服务：" class="headerlink" title="通过service mysqld start命令启动mysqld服务："></a>通过service mysqld start命令启动mysqld服务：</h3><ol>
+<h3 id="通过service-mysqld-start命令启动mysqld服务">通过service mysqld
+start命令启动mysqld服务：</h3>
+<ol type="1">
 <li>先kill掉所有mysqld服务</li>
 <li>注意要看日志</li>
 <li>可能出现没有权限的情况，</li>
 </ol>
-<p>注意：如果在 root 用户下，使用 mysqld 命令启用 MySQL 服务，则会导致产生一些所有者为 root 的文件，这就会导致以后若通过 service mysqld start 来启动 MySQL 服务时，会爆出 Permission Denied 的错误（MySQL 以用户 mysql 的身份来执行任务）。解决方法也很简单，只需要找到 MySQL 的日志文件，找到报错的位置，即找到没有权限的文件，将该文件的所有者修改为 mysql 用户即可。</p>
-<p>解释：<br>我们通过yum方式安装mysql,会生成mysql:mysql用户组和用户，启动mysql默认是使用mysql用户。如果我们开启了慢log日志，而且我们使用service mysqld start启动mysql,会报如题所示的错误，根据提示我们知道在my.cnf默认配置指定的&#x2F;var&#x2F;lib&#x2F;mysql这个目录下，存放着数据文件，&#x2F;var&#x2F;lib&#x2F;mysql权限虽然是归mysql:mysql用户组和用户拥有，但是这个目录下的大多数文件，权限都是700,也就是说通过mysql用户来启动，却少权限，我们可以改变这些文件的权限，从而通过使用service mysqld start命令来启动mysql,但是也可以有另外一种方法来启动mysql,而不用改变&#x2F;var&#x2F;lib&#x2F;mysql目录下的文件权限，这个命令就是mysqld –user&#x3D;root,如果需要让这个命令在后台执行，可以使用mysqld –user&#x3D;root &amp;.<br>可以使用<br>chown -R mysql &#x2F;var&#x2F;run&#x2F;mysqld chgrp -R mysql &#x2F;var&#x2F;run&#x2F;mysqld<br>赋予mysql用户&#x2F;var&#x2F;run&#x2F;mysqld的权限<br>除此之外还有&#x2F;var&#x2F;lib&#x2F;mysql</p>
-<h3 id="修改密码："><a href="#修改密码：" class="headerlink" title="修改密码："></a>修改密码：</h3><pre><code>skip-grant-tables #跳过mysql登入密码
+<p>注意：如果在 root 用户下，使用 mysqld 命令启用 MySQL
+服务，则会导致产生一些所有者为 root 的文件，这就会导致以后若通过 service
+mysqld start 来启动 MySQL 服务时，会爆出 Permission Denied 的错误（MySQL
+以用户 mysql 的身份来执行任务）。解决方法也很简单，只需要找到 MySQL
+的日志文件，找到报错的位置，即找到没有权限的文件，将该文件的所有者修改为
+mysql 用户即可。</p>
+<p>解释：
+我们通过yum方式安装mysql,会生成mysql:mysql用户组和用户，启动mysql默认是使用mysql用户。如果我们开启了慢log日志，而且我们使用service
+mysqld
+start启动mysql,会报如题所示的错误，根据提示我们知道在my.cnf默认配置指定的/var/lib/mysql这个目录下，存放着数据文件，/var/lib/mysql权限虽然是归mysql:mysql用户组和用户拥有，但是这个目录下的大多数文件，权限都是700,也就是说通过mysql用户来启动，却少权限，我们可以改变这些文件的权限，从而通过使用service
+mysqld
+start命令来启动mysql,但是也可以有另外一种方法来启动mysql,而不用改变/var/lib/mysql目录下的文件权限，这个命令就是mysqld
+--user=root,如果需要让这个命令在后台执行，可以使用mysqld --user=root
+&amp;. 可以使用 chown -R mysql /var/run/mysqld chgrp -R mysql
+/var/run/mysqld 赋予mysql用户/var/run/mysqld的权限
+除此之外还有/var/lib/mysql</p>
+<h3 id="修改密码">修改密码：</h3>
+<pre><code>skip-grant-tables #跳过mysql登入密码
 desc #表名 查询
 
 update user set authentication_string=SHA1(&#39;Your Password&#39;) where user=&#39;root&#39; and host=&#39;localhost&#39;;
-flush privileges
-</code></pre>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46278037/article/details/113923726">https://blog.csdn.net/m0_46278037/article/details/113923726</a><br>mysqld -console –skip-grant-tables –shared-memory –user&#x3D;root</p>
-<h3 id="远程连接授权"><a href="#远程连接授权" class="headerlink" title="远程连接授权"></a>远程连接授权</h3><p>grant all privileges on <em>.</em> to ‘root‘@’%’;</p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/50691977/how-to-reset-the-root-password-in-mysql-8-0-11">https://stackoverflow.com/questions/50691977/how-to-reset-the-root-password-in-mysql-8-0-11</a></p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9979134/how-can-i-change-mysql-port-from-0-to-3306">https://stackoverflow.com/questions/9979134/how-can-i-change-mysql-port-from-0-to-3306</a></p>
-<h3 id="解决端口-0"><a href="#解决端口-0" class="headerlink" title="解决端口 0"></a>解决端口 0</h3><p>edit your my.cnf file and add the line skip-networking &#x3D; Off to the [mysqld] section, then restart the server.</p>
-<h3 id="赋予连接权限："><a href="#赋予连接权限：" class="headerlink" title="赋予连接权限："></a>赋予连接权限：</h3><h4 id="授权所有权限-开启远程连接"><a href="#授权所有权限-开启远程连接" class="headerlink" title="授权所有权限 开启远程连接"></a>授权所有权限 开启远程连接</h4><pre><code>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39;；
-flush privileges;
-</code></pre>
-<p>但是出现另一个错误  </p>
-<pre><code>ERROR 1410 (42000): You are not allowed to create a user with GRANT
-</code></pre>
+flush privileges</code></pre>
+<p>参考：https://blog.csdn.net/m0_46278037/article/details/113923726<br />
+mysqld -console --skip-grant-tables --shared-memory --user=root</p>
+<h3 id="远程连接授权">远程连接授权</h3>
+<p>grant all privileges on <em>.</em> to 'root'@'%';</p>
+<p>https://stackoverflow.com/questions/50691977/how-to-reset-the-root-password-in-mysql-8-0-11</p>
+<p>https://stackoverflow.com/questions/9979134/how-can-i-change-mysql-port-from-0-to-3306</p>
+<h3 id="解决端口-0">解决端口 0</h3>
+<p>edit your my.cnf file and add the line skip-networking = Off to the
+[mysqld] section, then restart the server.</p>
+<h3 id="赋予连接权限">赋予连接权限：</h3>
+<h4 id="授权所有权限-开启远程连接">授权所有权限 开启远程连接</h4>
+<pre><code>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39;；
+flush privileges;</code></pre>
+<p>但是出现另一个错误</p>
+<pre><code>ERROR 1410 (42000): You are not allowed to create a user with GRANT</code></pre>
 <p>查询后解决：</p>
-<pre><code>update user set host=&#39;%&#39; where user=&#39;root&#39;;
-</code></pre>
+<pre><code>update user set host=&#39;%&#39; where user=&#39;root&#39;;</code></pre>
 <p>再执行两次</p>
-<pre><code>Grant all privileges on test.* to &#39;test&#39;@&#39;%&#39;;
-</code></pre>
+<pre><code>Grant all privileges on test.* to &#39;test&#39;@&#39;%&#39;;</code></pre>
 <p>成功</p>
-<h3 id="总的步骤"><a href="#总的步骤" class="headerlink" title="总的步骤"></a>总的步骤</h3><ol>
-<li>查看临时密码<br>在 log_error 参数(可以通过my.cnf配置文件查看)指定的错误日志中找到类似于如下的信息:<br>A temporary password is generated for root@localhost: AdOoGBs!k84f</li>
-<li>登录MySQL<br><code>mysql -uroot -p  Enter password: #输入步骤1中获取的密码，进入数据库。</code><br>3. 修改root密码<br>执行命令：<br><code>alter user root@&quot;localhost&quot; identified by &quot;your_new_passwd&quot;;</code><br>完成修改，便可以正常使用数据库。</li>
+<h3 id="总的步骤">总的步骤</h3>
+<ol type="1">
+<li>查看临时密码<br />
+在 log_error
+参数(可以通过my.cnf配置文件查看)指定的错误日志中找到类似于如下的信息: A
+temporary password is generated for root@localhost: AdOoGBs!k84f</li>
+<li>登录MySQL<br />
+<code>mysql -uroot -p     Enter password: #输入步骤1中获取的密码，进入数据库。</code>
+3. 修改root密码<br />
+执行命令：<br />
+<code>alter user root@"localhost" identified by "your_new_passwd";</code><br />
+完成修改，便可以正常使用数据库。</li>
 </ol>
 
 
 
-<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a
+target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享
+4.0 国际</a> 许可协议，转载请注明出处。</p>
 </div></section></div>
 
 </article>
@@ -185,7 +218,11 @@ flush privileges;
 
 
       
-<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">Zhonjc</a> 使用 <a
+target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a>
+主题创建。 本博客所有文章除特别声明外，均采用 <a
+target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA
+4.0</a> 许可协议，转载请注明出处。</p>
 <div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>，<span id="busuanzi_container_site_pv">总访问 <span id="busuanzi_value_site_pv"></span> 次</span>，<span id="busuanzi_container_site_uv">访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script>
