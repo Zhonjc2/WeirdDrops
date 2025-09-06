@@ -391,12 +391,18 @@ if (stellar.plugins.copycode) {
 }
 
 var backImg = document.createElement('img');
-backImg.src = 'https://api.kafuuchino.com.cn/?appid=67e3979f19047fa59c2a6c68&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UzOTY3YTE5MDQ3ZmE1OWMyYTZhMTUiLCJpYXQiOjE3NDI5Njg3MzV9.YnRZ0Br-JV5M1by3uDTK0K5HUOig3_oCyNEspcNrbrU';
+var backMask = document.createElement('img');
+backImg.src = 'https://t.alcy.cc/fj';
 backImg.style.opacity = 0;
 backImg.classList.add('back-img');
+backMask.src = '/images/back_mask.svg';
+backMask.style.opacity = 0;
+backMask.classList.add('back-mask');
 document.body.appendChild(backImg);
+document.body.appendChild(backMask);
 backImg.addEventListener('load',function(){
-  backImg.style.opacity = 1;
+  backImg.style.opacity = .3;
+  backMask.style.opacity = .5;
 })
 
 // 在页面加载完毕后执行

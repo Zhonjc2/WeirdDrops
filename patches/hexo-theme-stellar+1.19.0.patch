@@ -1,0 +1,483 @@
+diff --git a/node_modules/hexo-theme-stellar/.DS_Store b/node_modules/hexo-theme-stellar/.DS_Store
+new file mode 100644
+index 0000000..cf75331
+Binary files /dev/null and b/node_modules/hexo-theme-stellar/.DS_Store differ
+diff --git a/node_modules/hexo-theme-stellar/._.DS_Store b/node_modules/hexo-theme-stellar/._.DS_Store
+new file mode 100644
+index 0000000..28c42fb
+Binary files /dev/null and b/node_modules/hexo-theme-stellar/._.DS_Store differ
+diff --git a/node_modules/hexo-theme-stellar/.__config.yml b/node_modules/hexo-theme-stellar/.__config.yml
+new file mode 100644
+index 0000000..a09afe4
+Binary files /dev/null and b/node_modules/hexo-theme-stellar/.__config.yml differ
+diff --git a/node_modules/hexo-theme-stellar/_config.yml b/node_modules/hexo-theme-stellar/_config.yml
+index 6c1c69b..4b6d435 100644
+--- a/node_modules/hexo-theme-stellar/_config.yml
++++ b/node_modules/hexo-theme-stellar/_config.yml
+@@ -17,12 +17,14 @@ open_graph:
+ sidebar:
+   logo:
+     avatar: '[config.avatar](/about/)' # you can set avatar link in _config.yml or '[https://xxx.png](/about/)'
+-    title: '[config.title](/)' # you can set html tag like: '[<img no-lazy height="32px" src="xxx"/>](/)'
++    title: '[<span class="logo">WeirdDrops.</h1>](/)' # you can set html tag like: '[<img no-lazy height="32px" src="xxx"/>](/)'
+   menu:
+-    # post: '[btn.blog](/)'
++    post: '[btn.blog](/)'
+     # wiki: '[btn.wiki](/wiki/)'
+     # friends: '[友链](/friends/)'
+     # about: '[关于](/about/)'
++    todos: '[TO-DO](/todos/)'
++    mntips: '[Mini Tips](/mntips/)'
+   # Sidebar widgets
+   widgets:
+     #### 自动生成的页面 ####
+@@ -82,11 +84,11 @@ search:
+ 
+ ######## Comments ########
+ comments:
+-  service: # beaudar, utterances, giscus, twikoo, waline, artalk
++  service: beaudar # beaudar, utterances, giscus, twikoo, waline, artalk
+   # beaudar
+   # https://beaudar.lipk.org/
+   beaudar:
+-    repo: xxx/xxx
++    repo: Zhonjc2/zblogReview
+     issue-term: pathname
+     issue-number:
+     theme: preferred-color-scheme
+@@ -183,7 +185,7 @@ footer:
+   social:
+     # github:
+     #   icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/social/08a41b181ce68.svg"/>'
+-    #   url: /
++    #    url: /
+     # music:
+     #   icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/social/3845874.svg"/>'
+     #   url: /
+@@ -207,9 +209,14 @@ footer:
+     # '更多':
+     #   - '[关于本站](/)'
+     #   - '[GitHub](/)'
++  up_time:
++    enable: true
++  busuanzi:
++    enable: true
+   content: | # 支持 Markdown 格式
+-    本站由 [@anonymity](/) 使用 [Stellar](https://github.com/xaoxuu/hexo-theme-stellar) 主题创建。
++    本站由 [Zhonjc](/) 使用 [Stellar](https://github.com/xaoxuu/hexo-theme-stellar) 主题创建。
+     本博客所有文章除特别声明外，均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。
++
+   # 主题用户越多，开发者维护和更新的积极性就越高，如果您喜欢本主题，请在适当的位置显示主题信息和仓库链接以表支持。
+ 
+ 
+@@ -288,12 +295,12 @@ plugins:
+ 
+   # https://scrollrevealjs.org/api/reveal.html
+   scrollreveal:
+-    enable: #true
++    enable: # true
+     js: https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js
+-    distance: 8px
+-    duration: 500 # ms
++    distance: 1px
++    duration: 800 # ms
+     interval: 100 # ms
+-    scale: 1 # 0.1~1
++    scale: 0.5 # 0.1~1
+ 
+   # https://fancyapps.com/docs/ui/fancybox/
+   # available for {% image xxx %}
+@@ -332,7 +339,7 @@ plugins:
+   # https://github.com/KaTeX/KaTeX
+   # 使用 hexo-renderer-markdown-it-plus 作为公式渲染器：npm uninstall hexo-renderer-marked --save npm install hexo-renderer-markdown-it-plus --save
+   katex:
+-    enable: false
++    enable: true
+     min_css: <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+     min_js: <script defer src="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+     auto_render_min_js: <script defer src="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"onload="renderMathInElement(document.body);"></script>
+@@ -383,7 +390,7 @@ style:
+     codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+   text-align: left
+   border-radius:
+-    card: 12px
++    card: 15px
+     block: 12px
+     bar: 6px
+     image: 6px
+@@ -394,7 +401,7 @@ style:
+     code: 'hsl(14 100% 48%)' # 行内代码颜色
+     text: 'hsl(0 0% 20%)' # 文本颜色
+     # 主题色配置（不会根据明暗动态调整，请设置为通用的颜色）
+-    theme: 'hsl(192 98% 55%)' # 主题色
++    theme: 'hsl(0 84% 65%)' # 主题色
+     accent: 'hsl(14 100% 57%)' # 强调色
+     link: 'hsl(207 90% 54%)' # 超链接颜色
+     button: 'hsl(192 98% 55%)' # 按钮颜色
+@@ -410,7 +417,8 @@ style:
+     error: 加载失败，请稍后重试。
+   gradient: # https://webgradients.com/
+     start: 'linear-gradient(to right, hsl(215, 95%, 64%), hsl(195, 95%, 60%), hsl(165, 95%, 56%), hsl(165, 95%, 56%), hsl(195 95% 60%), hsl(215, 95%, 64%))'
+-    search: 'linear-gradient(to right, #04F3FF, #08FFC6, #DDF730, #FFBD19, #FF1FE0, #C418FF, #04F3FF)'
++    # search: 'linear-gradient(to right, #04F3FF, #08FFC6, #DDF730, #FFBD19, #FF1FE0, #C418FF, #04F3FF)'
++    search: 'linear-gradient(to right, #fa709a, #fee140, #fa709a);'
+ 
+ default:
+   avatar: https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/3442075.svg
+diff --git a/node_modules/hexo-theme-stellar/layout/_partial/main/bfooter.ejs b/node_modules/hexo-theme-stellar/layout/_partial/main/bfooter.ejs
+new file mode 100644
+index 0000000..7ddc40d
+--- /dev/null
++++ b/node_modules/hexo-theme-stellar/layout/_partial/main/bfooter.ejs
+@@ -0,0 +1,54 @@
++<%
++const author = 'Zhonjc';
++const using = '[' + stellar_info('name') + '](' + stellar_info('tree') + ')';
++const icp = theme.footer.icp;
++const source = theme.footer.source;
++const server = theme.footer.server;
++
++function layoutDiv() {
++  var wrapper = '';
++  wrapper += '<footer class="page-footer fs12"><hr><div>';
++  if (theme.footer.license) {
++    wrapper += markdown(__('footer.license', theme.footer.license));
++  }
++  if (icp) {
++    wrapper += markdown(__('footer.server_icp', author, server, icp));
++  } else {
++    wrapper += markdown(__('', author, server));
++  }
++
++  if (theme.footer.up_time) {
++    wrapper += '<div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>';
++    // if (theme.footer.busuanzi.enable) {
++    //   wrapper += '，<span id="busuanzi_container_site_pv">总访问量: <span id="busuanzi_value_site_pv"></span>次</span>';
++    //   wrapper += '，<span id="busuanzi_container_site_uv">访客数: <span id="busuanzi_value_site_uv"></span>人</span>';
++    // }
++    wrapper += '</div>'
++  }
++  if (theme.footer.travelling) {
++    wrapper += markdown(theme.footer.travelling);
++  }
++
++  wrapper += '</div></footer>';
++  return wrapper;
++}
++%>
++<%- layoutDiv() %>
++<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
++<script>
++  function createtime() {
++    var now = new Date();
++    var grt= new Date("07/20/2023 00:00:00");
++    now.setTime(now.getTime()+250);
++    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
++    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
++    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
++    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
++    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
++    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
++    document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 ";
++    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
++  };
++  setInterval("createtime()",250);
++</script>
++
+diff --git a/node_modules/hexo-theme-stellar/layout/_partial/main/footer.ejs b/node_modules/hexo-theme-stellar/layout/_partial/main/footer.ejs
+index cf423ca..40288c1 100644
+--- a/node_modules/hexo-theme-stellar/layout/_partial/main/footer.ejs
++++ b/node_modules/hexo-theme-stellar/layout/_partial/main/footer.ejs
+@@ -34,8 +34,39 @@ function layoutDiv() {
+       });
+     }
+   }
++  
++  if (theme.footer.up_time) {
++    el += '<div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>';
++    if (theme.footer.busuanzi.enable) {
++      el += '，<span id="busuanzi_container_site_pv">总访问 <span id="busuanzi_value_site_pv"></span> 次</span>';
++      el += '，<span id="busuanzi_container_site_uv">访客数 <span id="busuanzi_value_site_uv"></span> 人</span>';
++      // el += '，<span id="busuanzi_container_page_pv">本页面访问量 <span id="busuanzi_value_page_pv"></span> 次</span>';
++    }
++    el += '</div>'
++  }
++  if (theme.footer.travelling) {
++    el += markdown(theme.footer.travelling);
++  }  
++
+   el += '</div></footer>';
+   return el;
+ }
+ %>
+ <%- layoutDiv() %>
++<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
++<script>
++  function createtime() {
++    var now = new Date();
++    var grt= new Date("07/20/2023 00:00:00");
++    now.setTime(now.getTime()+250);
++    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
++    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
++    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
++    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
++    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
++    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
++    document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 ";
++    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
++  };
++  setInterval("createtime()",250);
++</script>
+diff --git a/node_modules/hexo-theme-stellar/source/.DS_Store b/node_modules/hexo-theme-stellar/source/.DS_Store
+new file mode 100644
+index 0000000..29daae4
+Binary files /dev/null and b/node_modules/hexo-theme-stellar/source/.DS_Store differ
+diff --git a/node_modules/hexo-theme-stellar/source/._.DS_Store b/node_modules/hexo-theme-stellar/source/._.DS_Store
+new file mode 100644
+index 0000000..28c42fb
+Binary files /dev/null and b/node_modules/hexo-theme-stellar/source/._.DS_Store differ
+diff --git a/node_modules/hexo-theme-stellar/source/css/.__custom.styl b/node_modules/hexo-theme-stellar/source/css/.__custom.styl
+new file mode 100644
+index 0000000..e20ec11
+Binary files /dev/null and b/node_modules/hexo-theme-stellar/source/css/.__custom.styl differ
+diff --git a/node_modules/hexo-theme-stellar/source/css/._main.styl b/node_modules/hexo-theme-stellar/source/css/._main.styl
+new file mode 100644
+index 0000000..f5d81c9
+Binary files /dev/null and b/node_modules/hexo-theme-stellar/source/css/._main.styl differ
+diff --git a/node_modules/hexo-theme-stellar/source/css/.vscode/settings.json b/node_modules/hexo-theme-stellar/source/css/.vscode/settings.json
+new file mode 100644
+index 0000000..28a51d5
+--- /dev/null
++++ b/node_modules/hexo-theme-stellar/source/css/.vscode/settings.json
+@@ -0,0 +1,3 @@
++{
++    "compile-hero.disable-compile-files-on-did-save-code": false
++}
+\ No newline at end of file
+diff --git a/node_modules/hexo-theme-stellar/source/css/_custom.styl b/node_modules/hexo-theme-stellar/source/css/_custom.styl
+index a4f0deb..a024f3b 100644
+--- a/node_modules/hexo-theme-stellar/source/css/_custom.styl
++++ b/node_modules/hexo-theme-stellar/source/css/_custom.styl
+@@ -92,3 +92,159 @@ $boxshadow-float = 0 4px 8px 0px rgba(0, 0, 0, 0.1)
+ $boxshadow-card-float = 0 2px 4px 0px rgba(0, 0, 0, 0.1), 0 4px 8px 0px rgba(0, 0, 0, 0.1), 0 8px 16px 0px rgba(0, 0, 0, 0.1)
+ $boxshadow-button = 0 0 2px 0px rgba(0, 0, 0, 0.04), 0 0 8px 0px rgba(0, 0, 0, 0.04)
+ $boxshadow-block = 0 1px 4px 0px rgba(0, 0, 0, 0.02), 0 2px 8px 0px rgba(0, 0, 0, 0.02)
++
++bodyd{
++	background-image: url("/images/pasted-0.png") !important;
++	background-repeat: no-repeat !important;
++	background-size: cover !important;
++	backdrop-filter: opacity(50%) !important;
++	-webkit-backdrop-filter: opacity(50%) !important;
++}
++
++body::after{
++	content: "欢迎来到 WeirdDrops 1.0";
++	position: absolute;
++	display: block;
++	z-index: 10000;
++	background-color: white;
++	color: black;
++	text-align: center;
++	width: 100%;
++	padding-top: 1rem;
++	padding-bottom: 1rem;
++}
++
++.back-img{
++	transition: all 5s ease; 
++	display: block;
++	width: 100%; 
++	height: 100%;
++	object-fit: cover;
++	// height: attr(body-height);
++	position: fixed;
++	// position: absolute;
++	top: 0;
++	right: 0;
++	bottom: 0; 
++	left: 0;
++	// background-image: url("https://t.mwm.moe/ysz");
++	// background-repeat: no-repeat;
++	// background-size: cover;
++	filter:  blur(0px) grayscale(50%) sepia(50%) saturate(2) !important;
++	-webkit-filter: blur(0px) sepia(50%) grayscale(50%)  saturate(2) !important; 
++	z-index: -9999
++}
++
++.l_body_disabled::after{
++	content: ''; // 注意：伪元素一定要有 content 属性，要不然就不显示了！！！
++	display: block;
++	z-index: -999;
++	width: 100%;
++	height: 100%;
++	background-color: rgba(255, 255, 255, 0);
++	// background: linear-gradient(to right, rgba(255,255,255,1), transparent);
++	position: fixed;
++	left: 0;
++	top: 0;
++	bottom: 0;
++	right: 0;
++	-webkit-backdrop-filter: blur(20px);
++	backdrop-filter: blur(20px);
++	// opacity: 0;
++	// transform: opacity
++}
++
++.widget-header{
++	background-color: rgba(0, 0, 0, 0.001) !important;
++	backdrop-filter: blur(20px) saturate(100%);
++        -webkit-backdrop-filter: blur(20px) saturate(100%);
++	border-bottom: 2px solid hsl(0 84% 65%);
++	padding: .5rem .5rem !important;
++	font-size: 1rem !important;
++	margin: 0 1rem .5rem 1rem !important;
++	color: hsl(0 84% 65%) !important;
++	border-radius: 0 .5rem 0 0;
++}
++
++.nav-item{
++	margin: 5px !important;
++	border-radius: 1rem !important;
++	transition: all .2s !important;
++}
++
++.widget-body{
++	padding: .5rem !important
++}
++
++.toc-link{
++	padding-top: .5rem !important;
++	padding-bottom: .5rem !important;
++}
++
++.toc-link:hover{
++	background-color: rgba(233, 234, 236, 0.5) !important;
++}
++
++.menu{
++	border-radius: 2rem !important;
++	box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.05) inset;
++}
++
++.nav-item:hover{
++	transition: all .2s !important;
++}
++
++.header{
++	margin-bottom: 1rem !important;
++}
++
++.widget-header > .name {
++	font-size: 1rem !important;
++}
++
++.search-form{
++	background-color: transparent !important;
++	color: black !important;
++	font-size: 1rem !important;
++}
++
++.search-input{
++	font-size: 1rem !important;
++}
++
++.nav-wrap{
++	background-color: rgba(0, 0, 0, 0.001) !important;
++	// border-radius: .8rem  !important;
++	padding: 0 .8rem !important;
++	backdrop-filter: blur(20px) saturate(100%);
++	-webkit-backdrop-filter: blur(20px) saturate(100%);
++}
++
++@font-face{
++	font-family: myriad;
++	src: url('/fonts/myriad.otf')
++}
++
++*{
++	font-family: myriad !important; 	
++}
++
++.logo{
++	letter-spacing: -2px;
++	margin-bottom: 1rem !important;
++	display: block;
++	font-weight: 500;
++}
++
++.logo::before{
++	content: '怪奇语录';
++	display: block;
++	font-size: 2rem;
++	padding: 0;
++	margin: 0
++}
++
++.post-card{
++	backdrop-filter: blur(20px);
++	-webkit-backdrop-filter: blur(20px);
++}
+diff --git a/node_modules/hexo-theme-stellar/source/css/_defines/theme.styl b/node_modules/hexo-theme-stellar/source/css/_defines/theme.styl
+index 56b520a..dddd837 100644
+--- a/node_modules/hexo-theme-stellar/source/css/_defines/theme.styl
++++ b/node_modules/hexo-theme-stellar/source/css/_defines/theme.styl
+@@ -34,10 +34,11 @@ set_text_light()
+ 
+ :root
+   --site-bg: hsl($color-background-h, $color-background-s, $color-background-l)
+-  --card: hsl($color-block-h, $color-block-s, 100)
++  --card: hsla($color-block-h, $color-block-s, 100, 0.5)
++  // --card: rgba(255, 255, 255, 0.5)
+   --block: hsl($color-block-h, $color-block-s, 95)
+   --block-border: hsl($color-block-h, $color-block-s, 90)
+-  --block-hover: hsl($color-block-h, $color-block-s, 92)
++  --block-hover: hsla($color-block-h, $color-block-s, 92, 0.5)
+   set_text_dark()
+   --theme-bg2: $color-theme
+   --theme-link: $color-link
+@@ -45,10 +46,11 @@ set_text_light()
+ set_darkmode()
+   :root
+     --site-bg: hsl($color-background-h, $color-background-s * 0.5, (100 - $color-background-l) * 2 + 8)
+-    --card: hsl($color-block-h, $color-block-s * 1.2, 24)
++    // --card: hsla($color-block-h, $color-block-s * 1.2, 24, 0.7)
++    --card: rgba(0, 0, 0, 0.2)
+     --block: hsl($color-block-h, $color-block-s, 16)
+     --block-border: hsl($color-block-h, $color-block-s, 24)
+-    --block-hover: hsl($color-block-h, $color-block-s, 20)
++    --block-hover: hsla($color-block-h, $color-block-s, 20, 0.5)
+     set_text_light()
+     @media screen and (max-width: $device-mobile-max)
+       --site-bg: black
+diff --git a/node_modules/hexo-theme-stellar/source/js/main.js b/node_modules/hexo-theme-stellar/source/js/main.js
+index fc8e2a7..231f904 100644
+--- a/node_modules/hexo-theme-stellar/source/js/main.js
++++ b/node_modules/hexo-theme-stellar/source/js/main.js
+@@ -389,3 +389,26 @@ if (stellar.plugins.heti) {
+ if (stellar.plugins.copycode) {
+   stellar.loadScript(stellar.plugins.copycode.js, { defer: true })
+ }
++
++var backImg = document.createElement('img');
++backImg.src = 'https://t.mwm.moe/ysz';
++backImg.style.opacity = 0;
++backImg.classList.add('back-img');
++document.body.appendChild(backImg);
++backImg.addEventListener('load',function(){
++  backImg.style.opacity = 0.2;
++})
++
++// 在页面加载完毕后执行
++window.addEventListener('load', function() {
++  var bodyHeight = document.body.scrollHeight + 'px'; // 获取文档的实际高度
++  var fake = window.getComputedStyle(document.querySelector('body'), ':after')
++  document.querySelector('body').setAttribute('body-height',bodyHeight)	
++    
++});
++
++// var pageHead = document.getElementsByTagName('head');
++// var headContent = pageHead[0].innerHTML;
++// headContent += '<meta name="baidu-site-verification" content="codeva-c5zzclTkOC" />';
++// pageHead[0].innerHTML = headContent;
++
