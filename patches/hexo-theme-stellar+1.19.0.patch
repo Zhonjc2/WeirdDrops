@@ -255,10 +255,10 @@ index 0000000..28a51d5
 +}
 \ No newline at end of file
 diff --git a/node_modules/hexo-theme-stellar/source/css/_custom.styl b/node_modules/hexo-theme-stellar/source/css/_custom.styl
-index a4f0deb..a024f3b 100644
+index a4f0deb..2167d8e 100644
 --- a/node_modules/hexo-theme-stellar/source/css/_custom.styl
 +++ b/node_modules/hexo-theme-stellar/source/css/_custom.styl
-@@ -92,3 +92,159 @@ $boxshadow-float = 0 4px 8px 0px rgba(0, 0, 0, 0.1)
+@@ -92,3 +92,185 @@ $boxshadow-float = 0 4px 8px 0px rgba(0, 0, 0, 0.1)
  $boxshadow-card-float = 0 2px 4px 0px rgba(0, 0, 0, 0.1), 0 4px 8px 0px rgba(0, 0, 0, 0.1), 0 8px 16px 0px rgba(0, 0, 0, 0.1)
  $boxshadow-button = 0 0 2px 0px rgba(0, 0, 0, 0.04), 0 0 8px 0px rgba(0, 0, 0, 0.04)
  $boxshadow-block = 0 1px 4px 0px rgba(0, 0, 0, 0.02), 0 2px 8px 0px rgba(0, 0, 0, 0.02)
@@ -272,7 +272,7 @@ index a4f0deb..a024f3b 100644
 +}
 +
 +body::after{
-+	content: "欢迎来到 WeirdDrops 1.0";
++	content: ;
 +	position: absolute;
 +	display: block;
 +	z-index: 10000;
@@ -285,7 +285,7 @@ index a4f0deb..a024f3b 100644
 +}
 +
 +.back-img{
-+	transition: all 5s ease; 
++	transition: all 2s ease; 
 +	display: block;
 +	width: 100%; 
 +	height: 100%;
@@ -300,9 +300,21 @@ index a4f0deb..a024f3b 100644
 +	// background-image: url("https://t.mwm.moe/ysz");
 +	// background-repeat: no-repeat;
 +	// background-size: cover;
-+	filter:  blur(0px) grayscale(50%) sepia(50%) saturate(2) !important;
-+	-webkit-filter: blur(0px) sepia(50%) grayscale(50%)  saturate(2) !important; 
++	// filter:  blur(0px) grayscale(50%) sepia(50%) saturate(2) !important;
++	// -webkit-filter: blur(0px) sepia(50%) grayscale(50%)  saturate(2) !important; 
 +	z-index: -9999
++}
++
++.back-mask{
++	transition: all 5s ease; 
++	display: block;
++	width: 100%; 
++	height: 100%;
++	object-fit: cover;
++	position: fixed;
++	top: 0;
++	left: 0;
++	z-index: -9990;
 +}
 +
 +.l_body_disabled::after{
@@ -388,6 +400,7 @@ index a4f0deb..a024f3b 100644
 +	padding: 0 .8rem !important;
 +	backdrop-filter: blur(20px) saturate(100%);
 +	-webkit-backdrop-filter: blur(20px) saturate(100%);
++	// top: 2rem !important;
 +}
 +
 +@font-face{
@@ -396,7 +409,7 @@ index a4f0deb..a024f3b 100644
 +}
 +
 +*{
-+	font-family: myriad !important; 	
++	font-family: system-ui sans-serif myriad !important; 	
 +}
 +
 +.logo{
@@ -415,8 +428,21 @@ index a4f0deb..a024f3b 100644
 +}
 +
 +.post-card{
-+	backdrop-filter: blur(20px);
-+	-webkit-backdrop-filter: blur(20px);
++	backdrop-filter: blur(20px) saturate(1.8);
++	-webkit-backdrop-filter: blur(20px) saturate(1.8);
++	background: rgba(250, 250, 252, 0.8) !important;
++}
++
++@media (prefers-color-scheme: dark) {
++  .post-card{
++	backdrop-filter: blur(20px) saturate(1.8);
++	-webkit-backdrop-filter: blur(20px) saturate(1.8);
++	background: rgba(24, 24, 24, 0.8) !important;
++}
++}
++
++.post-title{
++	font-weight: 100 !important
 +}
 diff --git a/node_modules/hexo-theme-stellar/source/css/_defines/theme.styl b/node_modules/hexo-theme-stellar/source/css/_defines/theme.styl
 index 56b520a..dddd837 100644
@@ -451,21 +477,27 @@ index 56b520a..dddd837 100644
      @media screen and (max-width: $device-mobile-max)
        --site-bg: black
 diff --git a/node_modules/hexo-theme-stellar/source/js/main.js b/node_modules/hexo-theme-stellar/source/js/main.js
-index fc8e2a7..231f904 100644
+index fc8e2a7..9172db2 100644
 --- a/node_modules/hexo-theme-stellar/source/js/main.js
 +++ b/node_modules/hexo-theme-stellar/source/js/main.js
-@@ -389,3 +389,26 @@ if (stellar.plugins.heti) {
+@@ -389,3 +389,32 @@ if (stellar.plugins.heti) {
  if (stellar.plugins.copycode) {
    stellar.loadScript(stellar.plugins.copycode.js, { defer: true })
  }
 +
 +var backImg = document.createElement('img');
-+backImg.src = 'https://t.mwm.moe/ysz';
++var backMask = document.createElement('img');
++backImg.src = 'https://t.alcy.cc/fj';
 +backImg.style.opacity = 0;
 +backImg.classList.add('back-img');
++backMask.src = '/images/back_mask.svg';
++backMask.style.opacity = 0;
++backMask.classList.add('back-mask');
 +document.body.appendChild(backImg);
++document.body.appendChild(backMask);
 +backImg.addEventListener('load',function(){
-+  backImg.style.opacity = 0.2;
++  backImg.style.opacity = .3;
++  backMask.style.opacity = .5;
 +})
 +
 +// 在页面加载完毕后执行
