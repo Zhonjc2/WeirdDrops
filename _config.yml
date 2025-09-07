@@ -6,8 +6,8 @@
 title: 怪奇语录 WeirdDrops
 subtitle: '应对焦虑的最好方法就是行动起来'
 description: '欢迎来到怪奇语录'
-keywords:
-favicon: /images/a
+keywords: '怪奇语录,WeirdDrops,应对焦虑的最好方法就是行动起来,欢迎来到怪奇语录'
+favicon: /images/favicon.png
 author: Zhonjc
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -23,7 +23,7 @@ pretty_urls:
 
 # Directory
 source_dir: source
-public_dir: public
+public_dir: docs
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
