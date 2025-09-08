@@ -6,6 +6,7 @@ tags:
   - 虚构
 description: 全新发布的 Blueboard 4，具备革命性的风流追踪性能。
 cover: /images/bb41.png
+type: 虚构
 ---
 
 ![](/images/bb41%201.png)
